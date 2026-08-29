@@ -253,7 +253,7 @@
 </main>
 <script>
 const KEY='prime_done_v2';
-const store={mem:{},async load(){try{if(window.storage){const r=await window.storage.get(KEY);if(r&&r.value)this.mem=JSON.parse(r.value);}}catch(e){}return this.mem;},async save(){try{if(window.storage)await window.storage.set(KEY,JSON.stringify(this.mem));}catch(e){}}};
+const store={mem:{},load(){try{const raw=localStorage.getItem(KEY);if(raw)this.mem=JSON.parse(raw);}catch(e){}return this.mem;},save(){try{localStorage.setItem(KEY,JSON.stringify(this.mem));}catch(e){}}};
 /* r=course, l=muscu, x=repos */
 const R=(d,t,i)=>({k:'run',d,t,i}), L=(d,t,i)=>({k:'lift',d,t,i}), X=(d,t,i)=>({k:'rest',d,t,i});
 function wk(n,dates,dl,sessions){return {n,dates,dl,sessions};}
