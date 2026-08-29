@@ -1,4 +1,4 @@
-const CACHE = 'prime-v1';
+const CACHE = 'prime-v2';
 const ASSETS = [
   './index.html',
   './manifest.webmanifest',

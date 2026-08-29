@@ -19,47 +19,31 @@
   :root{
     --granite:#161B21; --granite2:#1E252D; --granite3:#28313A; --raised:#313C46;
     --snow:#EDF1F4; --mist:#94A2AE; --faint:rgba(255,255,255,.07);
-    --ice:#58C6D8;
-    --b1:#49B56C; --b2:#E7A23C; --b3:#E45A4E;
-    --disp:'Barlow Condensed',Impact,sans-serif;
-    --body:'Inter',system-ui,sans-serif;
-    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --ice:#58C6D8; --b1:#49B56C; --b2:#E7A23C; --b3:#E45A4E;
+    --disp:'Barlow Condensed',Impact,sans-serif; --body:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
   body{background:var(--granite);color:var(--snow);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased}
-
-  /* topo backdrop */
-  .topo{position:fixed;inset:0;z-index:0;opacity:.35;pointer-events:none;
-    background:
-      radial-gradient(1200px 600px at 80% -10%, rgba(88,198,216,.10), transparent 60%),
-      radial-gradient(900px 500px at 0% 110%, rgba(228,90,78,.07), transparent 60%);}
+  .topo{position:fixed;inset:0;z-index:0;opacity:.35;pointer-events:none;background:radial-gradient(1200px 600px at 80% -10%, rgba(88,198,216,.10), transparent 60%),radial-gradient(900px 500px at 0% 110%, rgba(228,90,78,.07), transparent 60%);}
   .topo svg{position:absolute;inset:0;width:100%;height:100%}
   .wrap{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:0 20px}
-
-  /* header */
   header{padding:54px 0 26px;border-bottom:1px solid var(--faint)}
   .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--ice)}
   h1{font-family:var(--disp);font-weight:700;font-size:clamp(44px,9vw,86px);line-height:.92;letter-spacing:.01em;text-transform:uppercase;margin:10px 0 6px}
   h1 .thin{color:var(--mist);font-weight:500}
-  .sub{color:var(--mist);max-width:52ch;font-size:15px}
-
-  /* ridgeline */
+  .sub{color:var(--mist);max-width:54ch;font-size:15px}
   .ridge{margin:26px 0 4px;border:1px solid var(--faint);border-radius:14px;background:linear-gradient(180deg,var(--granite2),var(--granite));padding:16px 18px 10px}
   .ridge h3{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mist);margin-bottom:8px}
   .ridge svg{width:100%;height:130px;display:block;overflow:visible}
-  .ridge .lbl{font-family:var(--disp);font-weight:600;font-size:15px;letter-spacing:.04em;text-transform:uppercase;fill:var(--snow)}
+  .ridge .lbl{font-family:var(--disp);font-weight:600;font-size:15px;letter-spacing:.04em;text-transform:uppercase}
   .ridge .date{font-family:var(--mono);font-size:9.5px;fill:var(--mist)}
-
-  /* stats strip */
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0 4px}
   .stat{background:var(--granite2);border:1px solid var(--faint);border-radius:10px;padding:12px 14px}
   .stat b{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--snow);display:block}
   .stat span{font-size:11px;color:var(--mist);text-transform:uppercase;letter-spacing:.1em}
   @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
-
-  /* nav */
   nav{position:sticky;top:0;z-index:5;background:rgba(22,27,33,.86);backdrop-filter:blur(9px);border-bottom:1px solid var(--faint);margin-top:22px;padding-top:env(safe-area-inset-top)}
   .navin{display:flex;gap:6px;overflow-x:auto;padding:11px 20px;max-width:1040px;margin:0 auto;scrollbar-width:none}
   .navin::-webkit-scrollbar{display:none}
@@ -69,25 +53,19 @@
   .tab[data-b="b1"].on{background:var(--b1);border-color:var(--b1)}
   .tab[data-b="b2"].on{background:var(--b2);border-color:var(--b2)}
   .tab[data-b="b3"].on{background:var(--b3);border-color:var(--b3)}
-
   main{padding:30px 0 80px}
   section{display:none;animation:fade .3s ease}
   section.on{display:block}
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-
   .sechead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
   .sechead h2{font-family:var(--disp);font-weight:700;font-size:clamp(30px,6vw,46px);text-transform:uppercase;letter-spacing:.01em;line-height:1}
   .sechead .tag{font-family:var(--mono);font-size:12px;color:var(--mist)}
   .secfocus{color:var(--mist);margin-bottom:20px;font-size:15px}
   .accentbar{height:4px;width:64px;border-radius:4px;margin:2px 0 16px}
-
-  /* progress */
   .prog{display:flex;align-items:center;gap:12px;margin:0 0 22px;background:var(--granite2);border:1px solid var(--faint);border-radius:10px;padding:10px 14px}
   .prog .bar{flex:1;height:7px;background:var(--granite3);border-radius:6px;overflow:hidden}
   .prog .fill{height:100%;width:0;background:var(--ice);transition:width .3s}
   .prog .num{font-family:var(--mono);font-size:12px;color:var(--mist);white-space:nowrap}
-
-  /* week accordion */
   .week{border:1px solid var(--faint);border-radius:12px;margin-bottom:12px;overflow:hidden;background:var(--granite2)}
   .week.deload{border-color:rgba(88,198,216,.35)}
   .whead{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none}
@@ -102,8 +80,8 @@
   .week.open .chev{transform:rotate(90deg)}
   .wbody{display:none;padding:0 16px 8px}
   .week.open .wbody{display:block}
-
   .sess{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--faint)}
+  .sess.run{--tint:var(--ice)} .sess.lift{--tint:var(--b2)} .sess.rest{--tint:var(--mist)}
   .chk{flex:0 0 auto;width:22px;height:22px;border-radius:6px;border:1.5px solid var(--raised);background:var(--granite3);cursor:pointer;margin-top:2px;display:grid;place-items:center;transition:.15s}
   .chk:hover{border-color:var(--ice)}
   .chk.done{background:var(--ice);border-color:var(--ice)}
@@ -111,14 +89,12 @@
   .sbody{flex:1;min-width:0}
   .sbody.done{opacity:.5}
   .sbody.done .sday{text-decoration:line-through}
-  .sday{font-family:var(--disp);font-weight:600;font-size:16px;text-transform:uppercase;letter-spacing:.03em}
-  .sday small{font-family:var(--body);font-weight:400;text-transform:none;letter-spacing:0;color:var(--mist);font-size:12px;margin-left:6px}
+  .sday{font-family:var(--disp);font-weight:600;font-size:16px;text-transform:uppercase;letter-spacing:.03em;display:flex;align-items:center;gap:8px}
+  .sday .pill{font-family:var(--mono);font-weight:500;font-size:9.5px;letter-spacing:.08em;padding:2px 7px;border-radius:5px;background:color-mix(in srgb,var(--tint) 18%,transparent);color:var(--tint);text-transform:uppercase}
+  .sday small{font-family:var(--body);font-weight:400;text-transform:none;letter-spacing:0;color:var(--mist);font-size:12px}
   .items{list-style:none;margin-top:5px;display:flex;flex-direction:column;gap:3px}
   .items li{font-size:13.5px;color:#CBD5DD;display:flex;gap:7px}
-  .items li .k{color:var(--mist)}
   .items b{font-family:var(--mono);font-weight:700;color:var(--snow);font-size:12.5px}
-
-  /* reference cards */
   .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   @media(max-width:720px){.cards{grid-template-columns:1fr}}
   .card{background:var(--granite2);border:1px solid var(--faint);border-radius:12px;padding:18px 18px 16px}
@@ -133,151 +109,110 @@
   table.dash th,table.dash td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--faint)}
   table.dash th{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist)}
   table.dash td:first-child{color:var(--snow);font-weight:500}
-
+  .weekgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:6px}
+  @media(max-width:640px){.weekgrid{grid-template-columns:repeat(2,1fr)}}
+  .daycell{background:var(--granite3);border:1px solid var(--faint);border-radius:8px;padding:9px 8px}
+  .daycell .dn{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mist)}
+  .daycell .dv{font-family:var(--disp);font-weight:600;font-size:14px;text-transform:uppercase;margin-top:3px}
+  .daycell.r .dv{color:var(--ice)} .daycell.l .dv{color:var(--b2)} .daycell.x .dv{color:var(--mist)}
   footer{border-top:1px solid var(--faint);padding:22px 0 40px;color:var(--mist);font-size:12.5px;font-family:var(--mono)}
-  .kbd{font-family:var(--mono);font-size:11px;background:var(--granite3);border:1px solid var(--faint);border-radius:5px;padding:1px 6px;color:var(--mist)}
 </style>
 </head>
 <body>
 <div class="topo" aria-hidden="true">
-  <svg preserveAspectRatio="none" viewBox="0 0 1000 700">
-    <g fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1">
-      <path d="M-20,120 C200,60 380,180 560,120 S900,60 1020,150"/>
-      <path d="M-20,220 C220,150 400,270 580,210 S920,150 1020,240"/>
-      <path d="M-20,330 C240,250 420,370 600,300 S940,240 1020,340"/>
-      <path d="M-20,450 C240,370 440,490 620,420 S940,360 1020,470"/>
-      <path d="M-20,560 C260,480 460,600 640,530 S960,470 1020,580"/>
-    </g>
-  </svg>
+  <svg preserveAspectRatio="none" viewBox="0 0 1000 700"><g fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1">
+    <path d="M-20,120 C200,60 380,180 560,120 S900,60 1020,150"/><path d="M-20,220 C220,150 400,270 580,210 S920,150 1020,240"/>
+    <path d="M-20,330 C240,250 420,370 600,300 S940,240 1020,340"/><path d="M-20,450 C240,370 440,490 620,420 S940,360 1020,470"/>
+    <path d="M-20,560 C260,480 460,600 640,530 S960,470 1020,580"/></g></svg>
 </div>
-
 <div class="wrap">
   <header>
-    <div class="eyebrow">Programme d'athlète complet · fil conducteur montagne / AMM</div>
+    <div class="eyebrow">Athlète complet · fil conducteur montagne / AMM</div>
     <h1>Programme <span class="thin">Prime</span></h1>
-    <p class="sub">De maintenant à janvier 2027. Monter à 80 kg sec sans casser la course, débloquer le squat, exprimer le pic en décembre. Chaque séance est aussi dans ton agenda à 5 h.</p>
-
+    <p class="sub">De maintenant à janvier 2027. Monter à 80 kg sec sans casser la course, débloquer le squat, exprimer le pic en décembre. Semaine dégroupée : une seule séance par jour, courte et ciblée.</p>
     <div class="ridge" aria-label="Profil du programme">
       <h3>Profil du programme — on monte vers le pic</h3>
       <svg viewBox="0 0 1000 150" preserveAspectRatio="none" role="img">
-        <defs>
-          <linearGradient id="grd" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#49B56C"/><stop offset="0.42" stop-color="#49B56C"/>
-            <stop offset="0.46" stop-color="#E7A23C"/><stop offset="0.74" stop-color="#E7A23C"/>
-            <stop offset="0.78" stop-color="#E45A4E"/><stop offset="0.9" stop-color="#E45A4E"/>
-            <stop offset="0.95" stop-color="#58C6D8"/><stop offset="1" stop-color="#58C6D8"/>
-          </linearGradient>
-        </defs>
-        <!-- ridge fill -->
-        <path d="M0,120 L60,96 L120,84 L180,104 L240,70 L300,58 L360,74 L420,44
-                 L480,54 L540,30 L600,40 L660,20 L720,30 L780,10 L820,24 L870,66 L1000,96 L1000,150 L0,150 Z"
-              fill="url(#grd)" opacity="0.16"/>
-        <path d="M0,120 L60,96 L120,84 L180,104 L240,70 L300,58 L360,74 L420,44
-                 L480,54 L540,30 L600,40 L660,20 L720,30 L780,10 L820,24 L870,66 L1000,96"
-              fill="none" stroke="url(#grd)" stroke-width="2.5"/>
-        <!-- summit flag -->
-        <circle cx="780" cy="10" r="4" fill="#E45A4E"/>
-        <text x="784" y="9" class="date" style="fill:#E45A4E">▲ Benchmark 12/12</text>
-        <!-- block labels -->
-        <text x="10"  y="140" class="lbl" style="fill:#49B56C">Bloc 1</text>
-        <text x="10"  y="150" class="date">31/08–04/10 · Fondation</text>
-        <text x="440" y="140" class="lbl" style="fill:#E7A23C">Bloc 2</text>
-        <text x="440" y="150" class="date">05/10–22/11 · Force</text>
-        <text x="700" y="140" class="lbl" style="fill:#E45A4E">Bloc 3</text>
-        <text x="700" y="150" class="date">23/11–13/12 · Pic</text>
-        <text x="905" y="140" class="lbl" style="fill:#58C6D8">Oslo</text>
-        <text x="905" y="150" class="date">taper + re-tests</text>
+        <defs><linearGradient id="grd" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#49B56C"/><stop offset="0.42" stop-color="#49B56C"/><stop offset="0.46" stop-color="#E7A23C"/><stop offset="0.74" stop-color="#E7A23C"/>
+          <stop offset="0.78" stop-color="#E45A4E"/><stop offset="0.9" stop-color="#E45A4E"/><stop offset="0.95" stop-color="#58C6D8"/><stop offset="1" stop-color="#58C6D8"/></linearGradient></defs>
+        <path d="M0,120 L60,96 L120,84 L180,104 L240,70 L300,58 L360,74 L420,44 L480,54 L540,30 L600,40 L660,20 L720,30 L780,10 L820,24 L870,66 L1000,96 L1000,150 L0,150 Z" fill="url(#grd)" opacity="0.16"/>
+        <path d="M0,120 L60,96 L120,84 L180,104 L240,70 L300,58 L360,74 L420,44 L480,54 L540,30 L600,40 L660,20 L720,30 L780,10 L820,24 L870,66 L1000,96" fill="none" stroke="url(#grd)" stroke-width="2.5"/>
+        <circle cx="780" cy="10" r="4" fill="#E45A4E"/><text x="784" y="9" class="date" style="fill:#E45A4E">▲ Benchmark 12/12</text>
+        <text x="10" y="140" class="lbl" style="fill:#49B56C">Bloc 1</text><text x="10" y="150" class="date">31/08–04/10 · Fondation</text>
+        <text x="440" y="140" class="lbl" style="fill:#E7A23C">Bloc 2</text><text x="440" y="150" class="date">05/10–22/11 · Force</text>
+        <text x="700" y="140" class="lbl" style="fill:#E45A4E">Bloc 3</text><text x="700" y="150" class="date">23/11–13/12 · Pic</text>
+        <text x="905" y="140" class="lbl" style="fill:#58C6D8">Oslo</text><text x="905" y="150" class="date">taper + re-tests</text>
       </svg>
     </div>
-
     <div class="stats">
       <div class="stat"><b>78→80</b><span>kg sec (cible)</span></div>
       <div class="stat"><b>15</b><span>semaines chiffrées</span></div>
-      <div class="stat"><b>115/100/150</b><span>couché/squat/SDT</span></div>
+      <div class="stat"><b>1 / jour</b><span>séance ciblée</span></div>
       <div class="stat"><b>5 h 00</b><span>séances (ven 18 h)</span></div>
     </div>
   </header>
 </div>
-
-<nav>
-  <div class="navin" id="tabs">
-    <button class="tab on" data-sec="over">Vue d'ensemble</button>
-    <button class="tab" data-sec="b1" data-b="b1">Bloc 1 · Fondation</button>
-    <button class="tab" data-sec="b2" data-b="b2">Bloc 2 · Force</button>
-    <button class="tab" data-sec="b3" data-b="b3">Bloc 3 · Pic</button>
-    <button class="tab" data-sec="nut">Nutrition</button>
-    <button class="tab" data-sec="rec">Récup & Cheville</button>
-  </div>
-</nav>
-
+<nav><div class="navin" id="tabs">
+  <button class="tab on" data-sec="over">Vue d'ensemble</button>
+  <button class="tab" data-sec="b1" data-b="b1">Bloc 1 · Fondation</button>
+  <button class="tab" data-sec="b2" data-b="b2">Bloc 2 · Force</button>
+  <button class="tab" data-sec="b3" data-b="b3">Bloc 3 · Pic</button>
+  <button class="tab" data-sec="nut">Nutrition</button>
+  <button class="tab" data-sec="rec">Récup & Cheville</button>
+</div></nav>
 <main class="wrap">
-
-  <!-- OVERVIEW -->
   <section id="sec-over" class="on">
-    <div class="sechead"><h2>Le cap</h2><span class="tag">principes directeurs</span></div>
+    <div class="sechead"><h2>La semaine dégroupée</h2><span class="tag">une séance par jour</span></div>
     <div class="accentbar" style="background:var(--ice)"></div>
-    <div class="cards">
-      <div class="card">
-        <h4><span class="dot"></span>Les 2 principes</h4>
-        <ul>
-          <li><b>Jours durs durs, jours faciles faciles.</b> On polarise, on arrête de tout faire à moitié fort.</li>
-          <li><b>On regroupe le stress jambes.</b> Côte et piste tapent déjà les jambes ; la grosse séance de squat tombe loin d'elles, sur un tissu frais.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h4><span class="dot"></span>La semaine type</h4>
-        <ul>
-          <li><b>Lundi 5 h</b> — Côte + haut du corps</li>
-          <li><b>Mercredi 5 h</b> — Bas : squat talons surélevés + bulgares</li>
-          <li><b>Jeudi 5 h</b> — Côte facile <span class="k">(optionnel, coupé dès le Bloc 2)</span></li>
-          <li><b>Vendredi 18 h</b> — Piste vitesse + haut (force)</li>
-          <li><b>Dimanche 5 h</b> — Longue facile + bilan hebdo</li>
-          <li><b>Samedi</b> — Repos complet (ton vrai jour off)</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h4><span class="dot"></span>La logique montagne / AMM</h4>
-        <ul>
-          <li>Base aérobie → grimper longtemps sans exploser.</li>
-          <li>Force & puissance → montée, port de sac, contrôle en descente.</li>
-          <li>Rando qualifiante 1300 m+ D+ chargée dès le Bloc 2.</li>
-          <li>Pic exprimé sur un <b>benchmark D+ chargé</b> le 12/12.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h4><span class="dot"></span>Progression (sans appli)</h4>
-        <ul>
-          <li><b>Double progression :</b> tu montes les reps jusqu'en haut de fourchette, puis tu ajoutes 2,5–5 kg.</li>
-          <li><b>Course :</b> d'abord le volume (reps/durée), ensuite l'intensité.</li>
-          <li><b>Deload toutes les 4 semaines</b> pour ressortir plus frais.</li>
-        </ul>
-      </div>
+    <p class="secfocus">La course reste sur 3 jours ; la muscu haut se scinde en Mardi (poussée) + Jeudi (tirage) ; le squat garde son mercredi frais. Une journée sans jambes entre chaque journée jambes.</p>
+    <div class="weekgrid">
+      <div class="daycell r"><div class="dn">Lun</div><div class="dv">Côte</div></div>
+      <div class="daycell l"><div class="dn">Mar</div><div class="dv">Haut A</div></div>
+      <div class="daycell l"><div class="dn">Mer</div><div class="dv">Bas · squat</div></div>
+      <div class="daycell l"><div class="dn">Jeu</div><div class="dv">Haut B</div></div>
+      <div class="daycell r"><div class="dn">Ven 18h</div><div class="dv">Piste</div></div>
+      <div class="daycell x"><div class="dn">Sam</div><div class="dv">Repos / mobilité</div></div>
+      <div class="daycell r"><div class="dn">Dim</div><div class="dv">Longue</div></div>
     </div>
-    <p style="color:var(--mist);font-size:13px;margin-top:16px">Astuce : coche chaque séance quand elle est faite — la barre de progression de chaque bloc se remplit et tes coches sont mémorisées.</p>
+    <div class="cards" style="margin-top:18px">
+      <div class="card"><h4><span class="dot"></span>Les 2 principes</h4><ul>
+        <li><b>Jours durs durs, jours faciles faciles.</b> On polarise.</li>
+        <li><b>On regroupe le stress jambes.</b> Côte, piste et longue tapent déjà les jambes ; le squat tombe sur un mercredi frais, encadré de journées haut du corps.</li>
+      </ul></div>
+      <div class="card"><h4><span class="dot"></span>Haut A vs Haut B</h4><ul>
+        <li><b>Mardi — Haut A (poussée) :</b> développé couché (charge de la semaine) + incliné + dips/triceps.</li>
+        <li><b>Jeudi — Haut B (tirage/épaules) :</b> tractions lestées + développé militaire + tirage lourd + gainage.</li>
+      </ul></div>
+      <div class="card"><h4><span class="dot"></span>Progression (sans appli)</h4><ul>
+        <li><b>Double progression :</b> reps jusqu'en haut de fourchette, puis +2,5–5 kg.</li>
+        <li><b>Course :</b> d'abord le volume, ensuite l'intensité.</li>
+        <li><b>Deload toutes les 4 semaines.</b></li>
+      </ul></div>
+      <div class="card"><h4><span class="dot"></span>Logique montagne / AMM</h4><ul>
+        <li>Base aérobie → grimper longtemps.</li>
+        <li>Force & puissance → montée, port de sac, descente.</li>
+        <li>Rando qualifiante 1300 m+ D+ dès le Bloc 2.</li>
+        <li>Pic sur le <b>benchmark D+ chargé du 12/12</b>.</li>
+      </ul></div>
+    </div>
+    <p style="color:var(--mist);font-size:13px;margin-top:16px">Coche chaque séance faite — la barre de progression de chaque bloc se remplit et tes coches sont mémorisées.</p>
   </section>
-
-  <!-- BLOCKS render targets -->
   <section id="sec-b1"></section>
   <section id="sec-b2"></section>
   <section id="sec-b3"></section>
-
-  <!-- NUTRITION -->
   <section id="sec-nut">
     <div class="sechead"><h2>Nutrition</h2><span class="tag">au ressenti, sans comptage</span></div>
     <div class="accentbar" style="background:var(--ice)"></div>
     <p class="secfocus">Prendre les 2 kg comme une montée lente et nourrie (~0,3–0,4 kg/mois), pilotée au ressenti.</p>
     <div class="cards">
-      <div class="card">
-        <h4><span class="dot"></span>Les repères assiette</h4>
-        <ul>
-          <li><b>Protéines :</b> une bonne portion à chaque repas, priorité après la muscu et le soir.</li>
-          <li><b>Glucides :</b> jamais coupés — ta course en dépend, concentrés autour des séances dures.</li>
-          <li><b>Lipides :</b> assez pour les hormones, sans noyer l'assiette d'huile.</li>
-          <li><b>Répartition :</b> un peu plus les jours durs (lun/mer/ven/dim), maintenance les jours chantier.</li>
-        </ul>
-      </div>
-      <div class="card full">
-        <h4><span class="dot"></span>Ton tableau de bord au ressenti</h4>
+      <div class="card"><h4><span class="dot"></span>Les repères assiette</h4><ul>
+        <li><b>Protéines :</b> une bonne portion à chaque repas, priorité après la muscu et le soir.</li>
+        <li><b>Glucides :</b> jamais coupés — concentrés autour des séances dures.</li>
+        <li><b>Lipides :</b> assez pour les hormones, sans excès.</li>
+        <li><b>Répartition :</b> un peu plus les jours durs, maintenance les jours chantier.</li>
+      </ul></div>
+      <div class="card full"><h4><span class="dot"></span>Ton tableau de bord au ressenti</h4>
         <table class="dash">
           <tr><th>Signal</th><th>Ça va</th><th>Alerte → action</th></tr>
           <tr><td>Balance (tendance)</td><td>Monte doucement</td><td>Grimpe vite → tu prends du gras, lève le pied</td></tr>
@@ -289,247 +224,175 @@
       </div>
     </div>
   </section>
-
-  <!-- RECOVERY -->
   <section id="sec-rec">
     <div class="sechead"><h2>Récup &amp; Cheville</h2><span class="tag">le moteur du prime</span></div>
     <div class="accentbar" style="background:var(--ice)"></div>
     <div class="cards">
-      <div class="card">
-        <h4><span class="dot"></span>Récupération</h4>
-        <ul>
-          <li><b>Sommeil 7 h 30–9 h</b>, surtout avant les jours à double séance : c'est le levier n°1.</li>
-          <li><b>Un vrai jour de repos</b> par semaine, non négociable (samedi).</li>
-          <li><b>Le chantier compte</b> comme une charge : grosse journée → n'empile pas ta séance lourde.</li>
-          <li><b>Deload</b> = volume −40 à −50 %, un seul run dur, tu ressors plus fort.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h4><span class="dot"></span>Signaux d'empilement (deload en avance si ≥2)</h4>
-        <ul>
-          <li>Sommeil qui se dégrade.</li>
-          <li>Courbatures qui ne partent plus.</li>
-          <li>Fréquence cardiaque au repos qui monte.</li>
-          <li>Motivation à plat, chronos et charges qui reculent.</li>
-        </ul>
-      </div>
-      <div class="card full">
-        <h4><span class="dot"></span>Débloquer le squat — c'est la cheville, pas les quadris</h4>
-        <ul>
-          <li>Tes quadris sont un <b>point fort</b> (bulgares lourdes, randos chargées, gros D+) — le squat bas vient d'une <b>cheville raide</b> qui bride la position.</li>
-          <li><b>Solution immédiate :</b> squat talons surélevés (cales/haltéro), stance un peu large, pointes ouvertes.</li>
-          <li><b>Attention :</b> front squat et high-bar demandent PLUS de dorsiflexion → talon obligatoire.</li>
-          <li><b>Test à suivre :</b> genou-au-mur (écart orteils-mur), à mesurer régulièrement — c'est ton vrai indicateur, la charge de squat suit.</li>
-          <li>Charger les quadris sans la cheville : bulgares lestées, presse, step-ups chargés.</li>
-        </ul>
-      </div>
+      <div class="card"><h4><span class="dot"></span>Récupération</h4><ul>
+        <li><b>Sommeil 7 h 30–9 h</b> : le levier n°1.</li>
+        <li><b>Samedi léger</b> (repos/mobilité) même si tu t'entraînes tous les jours.</li>
+        <li><b>Le chantier compte</b> : grosse journée → n'empile pas la séance lourde.</li>
+        <li><b>Deload</b> = −40 à −50 % de volume, tu ressors plus fort.</li>
+      </ul></div>
+      <div class="card"><h4><span class="dot"></span>Signaux d'empilement (deload si ≥2)</h4><ul>
+        <li>Sommeil qui se dégrade.</li>
+        <li>Courbatures qui ne partent plus.</li>
+        <li>Fréquence cardiaque au repos qui monte.</li>
+        <li>Motivation à plat, chronos/charges qui reculent.</li>
+      </ul></div>
+      <div class="card full"><h4><span class="dot"></span>Débloquer le squat — c'est la cheville, pas les quadris</h4><ul>
+        <li>Tes quadris sont un <b>point fort</b> (bulgares lourdes, randos chargées, gros D+) — le squat bas vient d'une <b>cheville raide</b>.</li>
+        <li><b>Solution :</b> squat talons surélevés (cales/haltéro), stance un peu large, pointes ouvertes.</li>
+        <li><b>Attention :</b> front squat et high-bar demandent PLUS de dorsiflexion → talon obligatoire.</li>
+        <li><b>Indicateur :</b> genou-au-mur (écart orteils-mur), à retester — la charge de squat suit.</li>
+      </ul></div>
     </div>
-    <p style="color:var(--mist);font-size:13px;margin-top:16px">Après le pic : taper + fêtes + Oslo (application montagne : rando, traîneau), puis re-tests le 26/01 — 1RM estimés, 5 km propre, genou-au-mur.</p>
+    <p style="color:var(--mist);font-size:13px;margin-top:16px">Après le pic : taper + fêtes + Oslo (rando, traîneau), puis re-tests le 26/01 — 1RM estimés, 5 km propre, genou-au-mur.</p>
   </section>
-
-  <footer>
-    Programme Prime · Emeric · août 2026 → janvier 2027 — Tout est piloté au ressenti : si ton corps dit qu'il y a un souci, tu ajustes. Reviens vers moi pour recaler.
-  </footer>
+  <footer>Programme Prime · Emeric · août 2026 → janvier 2027 — Piloté au ressenti. Si ton corps signale un souci, tu ajustes, et on recale ensemble.</footer>
 </main>
-
 <script>
-/* ---------- storage (persistant si dispo, sinon en mémoire) ---------- */
-const KEY='prime_done_v1';
-const store={mem:{},ready:false,
-  async load(){try{if(window.storage){const r=await window.storage.get(KEY);if(r&&r.value)this.mem=JSON.parse(r.value);}}catch(e){}this.ready=true;return this.mem;},
-  async save(){try{if(window.storage)await window.storage.set(KEY,JSON.stringify(this.mem));}catch(e){}}
-};
+const KEY='prime_done_v2';
+const store={mem:{},async load(){try{if(window.storage){const r=await window.storage.get(KEY);if(r&&r.value)this.mem=JSON.parse(r.value);}}catch(e){}return this.mem;},async save(){try{if(window.storage)await window.storage.set(KEY,JSON.stringify(this.mem));}catch(e){}}};
+/* r=course, l=muscu, x=repos */
+const R=(d,t,i)=>({k:'run',d,t,i}), L=(d,t,i)=>({k:'lift',d,t,i}), X=(d,t,i)=>({k:'rest',d,t,i});
+function wk(n,dates,dl,sessions){return {n,dates,dl,sessions};}
+/* haut A (mardi) / haut B (jeudi) helper builders */
+const HA=(bench)=>L('Mardi','Haut A — poussée',['🏋️ Développé couché <b>'+bench+'</b>','Développé incliné haltères 3×8-10','Dips ou triceps 3×10 · Gainage 3 séries']);
+const HAd=(bench)=>L('Mardi','Haut A — poussée (deload)',['🏋️ Développé couché <b>'+bench+'</b>','Accessoires légers 2×10']);
+const HB=(trac,mil)=>L('Jeudi','Haut B — tirage / épaules',['🏋️ Tractions lestées <b>'+trac+'</b> · Militaire <b>'+mil+'</b>','Tirage/rowing lourd 4×6 · Curl 3×12 · Gainage']);
+const HBd=(trac,mil)=>L('Jeudi','Haut B — tirage / épaules (deload)',['🏋️ Tractions <b>'+trac+'</b> · Militaire <b>'+mil+'</b> léger']);
+const SAT=X('Samedi','Repos actif / mobilité cheville',['Repos complet OU 20-30 min mobilité + genou-au-mur','Côte facile possible si vraiment en forme']);
 
-/* ---------- data ---------- */
-const B=(l)=>({k:l});
 const blocks=[
  {id:'b1',name:'Bloc 1 · Fondation',accent:'var(--b1)',dates:'31 août → 4 oct',focus:'Hypertrophie-force · base aérobie · débloquer le squat (talons surélevés).',
   weeks:[
-   {n:1,dates:'30 août → 6 sept',sessions:[
-     {d:'Dimanche 30/08',t:'Longue + bilan de départ',i:['🏃 Longue 75–90 min facile','📊 Baseline : poids, photo, genou-au-mur']},
-     {d:'Lundi 31/08',t:'Côte + haut',i:['🏃 Côte 8×40 s','🏋️ Développé couché <b>4×8 @ 80</b>','Tractions 4×8 · Rowing 3×10']},
-     {d:'Mercredi 02/09',t:'Bas — squat',i:['🦶 Genou-au-mur 2–3 min/j','⚙️ Squat talons surélevés <b>4×8 @ 60</b>','Bulgares 3×10/j · Presse/step-ups 3×12']},
-     {d:'Jeudi 03/09',o:'optionnel',t:'Côte facile',i:['🏃 25–30 min aisance']},
-     {d:'Vendredi 04/09',t:'Piste + haut',i:['🏃 Piste 6×400','🏋️ Militaire/couché 4×6 · Tirage 4×6']},
-     {d:'Dimanche 06/09',t:'Longue',i:['🏃 Longue 90 min facile · bilan']},
-   ]},
-   {n:2,dates:'7 → 13 sept',sessions:[
-     {d:'Lundi',t:'Côte + haut',i:['🏃 Côte 9×40 s','🏋️ Développé couché <b>4×8 @ 82,5</b>','Tractions 4×9 · Rowing 3×10']},
-     {d:'Mercredi',t:'Bas — squat',i:['⚙️ Squat talons surélevés <b>4×8 @ 65</b>','Bulgares 3×10/j (+1 cran) · Presse/step-ups 3×12 · Mollets 3×15']},
-     {d:'Jeudi',o:'optionnel',t:'Côte facile',i:['🏃 30 min aisance']},
-     {d:'Vendredi',t:'Piste + haut',i:['🏃 Piste 7×400','🏋️ Militaire 4×6 · Tirage 4×6']},
-     {d:'Dimanche',t:'Longue',i:['🏃 100 min facile · bilan']},
-   ]},
-   {n:3,dates:'14 → 20 sept',sessions:[
-     {d:'Lundi',t:'Côte + haut',i:['🏃 Côte 10×40 s','🏋️ Développé couché <b>4×8 @ 85</b> (vise 9–10)','Tractions 4×10 · Rowing 3×12']},
-     {d:'Mercredi',t:'Bas — squat',i:['⚙️ Squat talons surélevés <b>4×8 @ 70</b>','Bulgares 3×12/j · Presse/step-ups 3×15']},
-     {d:'Jeudi',o:'optionnel',t:'Côte facile',i:['🏃 30 min aisance']},
-     {d:'Vendredi',t:'Piste + haut',i:['🏃 Piste 8×400','🏋️ Militaire 4×6 (+2,5) · Tirage 4×6']},
-     {d:'Dimanche',t:'Longue',i:['🏃 105 min facile · bilan']},
-   ]},
-   {n:4,dl:true,dates:'21 → 27 sept',sessions:[
-     {d:'Lundi',t:'Côte + haut',i:['🏃 Côte 5×40 s facile','🏋️ Développé couché 3×6 @ 70','Tractions 3×6']},
-     {d:'Mercredi',t:'Bas — squat',i:['⚙️ Squat talons surélevés 3×6 @ 50','Bulgares 2×10/j léger']},
-     {d:'Jeudi',o:'optionnel',t:'Repos / marche',i:['🏃 20–30 min ou repos']},
-     {d:'Vendredi',t:'Piste + haut',i:['🏃 Piste 4×400 relâché','🏋️ Militaire 3×5 léger']},
-     {d:'Dimanche',t:'Longue',i:['🏃 60 min très facile · bilan']},
-   ]},
-   {n:5,dates:'28 sept → 4 oct',sessions:[
-     {d:'Lundi',t:'Côte + haut',i:['🏃 Côte 8×45 s','🏋️ Développé couché <b>4×6 @ 87,5</b>','Tractions 4×8 lestées · Rowing 3×10']},
-     {d:'Mercredi',t:'Bas — squat',i:['⚙️ Squat talons surélevés <b>4×6 @ 75</b>','Bulgares 3×10/j plus lourd · Step-ups chargés 3×12']},
-     {d:'Jeudi',o:'dernier · optionnel',t:'Côte facile',i:['🏃 30 min · dès le Bloc 2, coupé']},
-     {d:'Vendredi',t:'Piste + haut',i:['🏃 Piste 6×500','🏋️ Militaire 4×5 · Tirage 4×6']},
-     {d:'Dimanche',t:'Longue + mini-test',i:['🏃 110 min facile','🦶 Re-teste le genou-au-mur (compare S1)']},
-   ]},
+   wk(1,'30 août → 6 sept',false,[
+     R('Dimanche 30/08','Baseline + longue',['🏃 Longue 75-90 min facile','📊 Point zéro : poids, photo, genou-au-mur']),
+     R('Lundi 31/08','Côte',['🏃 Côte 8×40 s (récup descente ~90 s)']),
+     HA('4×8 @ 80'),
+     L('Mercredi','Bas — squat',['🦶 Genou-au-mur 2-3 min/j','⚙️ Squat talons surélevés <b>4×8 @ 60</b>','Bulgares 3×10/j · Presse/step-ups 3×12']),
+     HB('4×8','4×6'),
+     R('Vendredi 18h','Piste',['🏃 Piste 6×400 allure 5 km, récup 200 m']),
+     SAT,
+     R('Dimanche 06/09','Longue',['🏃 90 min facile · bilan']),
+   ]),
+   wk(2,'7 → 13 sept',false,[
+     R('Lundi','Côte',['🏃 Côte 9×40 s']), HA('4×8 @ 82,5'),
+     L('Mercredi','Bas — squat',['⚙️ Squat talons surélevés <b>4×8 @ 65</b>','Bulgares 3×10/j (+1 cran) · Presse/step-ups 3×12 · Mollets 3×15']),
+     HB('4×9','4×6'), R('Vendredi 18h','Piste',['🏃 Piste 7×400']), SAT, R('Dimanche','Longue',['🏃 100 min facile · bilan']),
+   ]),
+   wk(3,'14 → 20 sept',false,[
+     R('Lundi','Côte',['🏃 Côte 10×40 s']), HA('4×8 @ 85 (vise 9-10)'),
+     L('Mercredi','Bas — squat',['⚙️ Squat talons surélevés <b>4×8 @ 70</b>','Bulgares 3×12/j · Presse/step-ups 3×15']),
+     HB('4×10','4×6'), R('Vendredi 18h','Piste',['🏃 Piste 8×400']), SAT, R('Dimanche','Longue',['🏃 105 min facile · bilan']),
+   ]),
+   wk(4,'21 → 27 sept',true,[
+     R('Lundi','Côte (deload)',['🏃 Côte 5×40 s FACILE']), HAd('3×6 @ 70'),
+     L('Mercredi','Bas — squat (deload)',['⚙️ Squat talons surélevés 3×6 @ 50','Bulgares 2×10/j léger']),
+     HBd('3×6','3×5'), R('Vendredi 18h','Piste (deload)',['🏃 Piste 4×400 relâché']), SAT, R('Dimanche','Longue (deload)',['🏃 60 min très facile · bilan']),
+   ]),
+   wk(5,'28 sept → 4 oct',false,[
+     R('Lundi','Côte',['🏃 Côte 8×45 s']), HA('4×6 @ 87,5'),
+     L('Mercredi','Bas — squat',['⚙️ Squat talons surélevés <b>4×6 @ 75</b>','Bulgares 3×10/j plus lourd · Step-ups chargés 3×12']),
+     HB('4×8 lestées','4×5'), R('Vendredi 18h','Piste',['🏃 Piste 6×500']), SAT,
+     R('Dimanche','Longue + mini-test',['🏃 110 min facile','🦶 Re-teste le genou-au-mur (compare S1)']),
+   ]),
   ]},
-
- {id:'b2',name:'Bloc 2 · Force & Puissance',accent:'var(--b2)',dates:'5 oct → 22 nov',focus:'Force lourde sur les mains, puissance, spécifique montagne. Jeudi coupé.',
+ {id:'b2',name:'Bloc 2 · Force & Puissance',accent:'var(--b2)',dates:'5 oct → 22 nov',focus:'Force lourde, puissance, spécifique montagne.',
   weeks:[
-   {n:6,dates:'5 → 11 oct',sessions:[
-     {d:'Lundi',t:'Côte puissance + haut',i:['🏃 Côte puissance 6×60 s','🏋️ Développé couché <b>4×5 @ 90</b>','Tractions lestées 4×5 · Rowing 4×6']},
-     {d:'Mercredi',t:'Bas force',i:['⚙️ Squat talons surélevés <b>5×5 @ 80</b>','Bulgares 3×8/j lourdes · Step-ups 3×8 · Presse 3×8']},
-     {d:'Vendredi',t:'Piste VMA + haut',i:['🏃 5×1000 m','🏋️ Militaire 4×5 · Tirage 4×5']},
-     {d:'Dimanche',t:'Longue',i:['🏃 110 min facile · bilan']},
-   ]},
-   {n:7,dates:'12 → 18 oct',sessions:[
-     {d:'Lundi',t:'Côte puissance + haut',i:['🏃 Côte 7×60 s','🏋️ Développé couché <b>4×5 @ 92,5</b>','Tractions lestées 4×5 · Rowing 4×6']},
-     {d:'Mercredi',t:'Bas force',i:['⚙️ Squat talons surélevés <b>5×5 @ 85</b>','Bulgares 3×8/j · Step-ups 3×8 · Presse 3×8']},
-     {d:'Vendredi',t:'Piste VMA + haut',i:['🏃 6×1000 m','🏋️ Militaire 4×5 · Tirage 4×5']},
-     {d:'Dimanche',bm:'AMM',t:'Rando qualifiante',i:['🏔️ 1300 m+ D+, sac chargé','sinon longue 120 min · bilan']},
-   ]},
-   {n:8,dl:true,dates:'19 → 25 oct',sessions:[
-     {d:'Lundi',t:'Côte + haut',i:['🏃 Côte 4×60 s facile','🏋️ Développé couché 3×4 @ 77,5 · Tractions 3×4']},
-     {d:'Mercredi',t:'Bas',i:['⚙️ Squat talons surélevés 3×4 @ 65','Bulgares 2×8/j léger']},
-     {d:'Vendredi',t:'Piste + haut',i:['🏃 3×1000 relâché','🏋️ Militaire 3×4 léger']},
-     {d:'Dimanche',t:'Longue',i:['🏃 75 min très facile · bilan']},
-   ]},
-   {n:9,dates:'26 oct → 1 nov',sessions:[
-     {d:'Lundi',t:'Côte puissance + haut',i:['🏃 Côte 8×60 s','🏋️ Développé couché <b>4×5 @ 95</b>','Tractions lestées 4×5 · Rowing 4×6']},
-     {d:'Mercredi',t:'Bas force',i:['⚙️ Squat talons surélevés <b>5×4 @ 90</b>','Bulgares 3×6/j lourdes · Step-ups 3×8 · Presse 3×8']},
-     {d:'Vendredi',t:'Piste + haut',i:['🏃 5×1200 m','🏋️ Militaire 4×4 · Tirage 4×5']},
-     {d:'Dimanche',t:'Longue',i:['🏃 120 min facile · bilan']},
-   ]},
-   {n:10,dates:'2 → 8 nov',sessions:[
-     {d:'Lundi',t:'Côte puissance + haut',i:['🏃 Côte 6×75 s','🏋️ Développé couché <b>4×4 @ 97,5</b>','Tractions lestées 4×4']},
-     {d:'Mercredi',t:'Bas force',i:['⚙️ Squat talons surélevés <b>5×4 @ 92,5</b>','Bulgares 3×6/j · Step-ups chargés 3×6 · Presse 3×8']},
-     {d:'Vendredi',t:'Piste + haut',i:['🏃 8×300 vite','🏋️ Militaire 4×4 · Tirage 4×5']},
-     {d:'Dimanche',bm:'AMM',t:'Rando chargée',i:['🏔️ D+ chargé (AMM)','sinon longue 120 min · bilan']},
-   ]},
-   {n:11,dates:'9 → 15 nov',sessions:[
-     {d:'Lundi',t:'Côte puissance + haut',i:['🏃 Côte 7×75 s','🏋️ Développé couché <b>4×4 @ 100</b>','Tractions lestées 4×4']},
-     {d:'Mercredi',t:'Bas force',i:['⚙️ Squat talons surélevés <b>5×4 @ 95</b>','Bulgares 3×6/j lourdes · Step-ups 3×6']},
-     {d:'Vendredi',t:'Piste + haut',i:['🏃 6×1000 seuil-VMA','🏋️ Militaire 4×4 · Tirage 4×5']},
-     {d:'Dimanche',t:'Longue',i:['🏃 120–130 min facile · bilan']},
-   ]},
-   {n:12,dl:true,dates:'16 → 22 nov',sessions:[
-     {d:'Lundi',t:'Côte + haut',i:['🏃 Côte 4×60 s facile','🏋️ Développé couché 3×3 @ 82,5 · Tractions 3×4']},
-     {d:'Mercredi',t:'Bas',i:['⚙️ Squat talons surélevés 3×3 @ 75','Bulgares 2×8/j léger']},
-     {d:'Vendredi',t:'Piste + haut',i:['🏃 4×400 relâché','🏋️ Militaire 3×3 léger']},
-     {d:'Dimanche',t:'Longue',i:['🏃 75 min très facile · on arrive frais sur le pic']},
-   ]},
+   wk(6,'5 → 11 oct',false,[
+     R('Lundi','Côte puissance',['🏃 Côte puissance 6×60 s (récup complète)']), HA('4×5 @ 90'),
+     L('Mercredi','Bas force',['⚙️ Squat talons surélevés <b>5×5 @ 80</b>','Bulgares 3×8/j lourdes · Step-ups 3×8 · Presse 3×8']),
+     HB('4×5 lestées','4×5'), R('Vendredi 18h','Piste VMA',['🏃 5×1000 m, récup 2-3 min']), SAT, R('Dimanche','Longue',['🏃 110 min facile · bilan']),
+   ]),
+   wk(7,'12 → 18 oct',false,[
+     R('Lundi','Côte puissance',['🏃 Côte 7×60 s']), HA('4×5 @ 92,5'),
+     L('Mercredi','Bas force',['⚙️ Squat talons surélevés <b>5×5 @ 85</b>','Bulgares 3×8/j · Step-ups 3×8 · Presse 3×8']),
+     HB('4×5','4×5'), R('Vendredi 18h','Piste VMA',['🏃 6×1000 m']), SAT,
+     R('Dimanche','Rando qualifiante',['🏔️ 1300 m+ D+, sac chargé (AMM)','sinon longue 120 min · bilan']),
+   ]),
+   wk(8,'19 → 25 oct',true,[
+     R('Lundi','Côte (deload)',['🏃 Côte 4×60 s FACILE']), HAd('3×4 @ 77,5'),
+     L('Mercredi','Bas (deload)',['⚙️ Squat talons surélevés 3×4 @ 65','Bulgares 2×8/j léger']),
+     HBd('3×4','3×4'), R('Vendredi 18h','Piste (deload)',['🏃 3×1000 relâché']), SAT, R('Dimanche','Longue (deload)',['🏃 75 min très facile']),
+   ]),
+   wk(9,'26 oct → 1 nov',false,[
+     R('Lundi','Côte puissance',['🏃 Côte 8×60 s']), HA('4×5 @ 95'),
+     L('Mercredi','Bas force',['⚙️ Squat talons surélevés <b>5×4 @ 90</b>','Bulgares 3×6/j lourdes · Step-ups 3×8']),
+     HB('4×5','4×4'), R('Vendredi 18h','Piste',['🏃 5×1200 m']), SAT, R('Dimanche','Longue',['🏃 120 min facile']),
+   ]),
+   wk(10,'2 → 8 nov',false,[
+     R('Lundi','Côte puissance',['🏃 Côte 6×75 s']), HA('4×4 @ 97,5'),
+     L('Mercredi','Bas force',['⚙️ Squat talons surélevés <b>5×4 @ 92,5</b>','Bulgares 3×6/j · Step-ups chargés 3×6']),
+     HB('4×4','4×4'), R('Vendredi 18h','Piste',['🏃 8×300 vite']), SAT, R('Dimanche','Rando chargée',['🏔️ D+ chargé (AMM) · sinon 120 min']),
+   ]),
+   wk(11,'9 → 15 nov',false,[
+     R('Lundi','Côte puissance',['🏃 Côte 7×75 s']), HA('4×4 @ 100'),
+     L('Mercredi','Bas force',['⚙️ Squat talons surélevés <b>5×4 @ 95</b>','Bulgares 3×6/j lourdes · Step-ups 3×6']),
+     HB('4×4','4×4'), R('Vendredi 18h','Piste',['🏃 6×1000 seuil-VMA']), SAT, R('Dimanche','Longue',['🏃 120-130 min facile']),
+   ]),
+   wk(12,'16 → 22 nov',true,[
+     R('Lundi','Côte (deload)',['🏃 Côte 4×60 s FACILE']), HAd('3×3 @ 82,5'),
+     L('Mercredi','Bas (deload)',['⚙️ Squat talons surélevés 3×3 @ 75','Bulgares 2×8/j léger']),
+     HBd('3×4','3×3'), R('Vendredi 18h','Piste (deload)',['🏃 4×400 relâché']), SAT, R('Dimanche','Longue (deload)',['🏃 75 min · on arrive frais sur le pic']),
+   ]),
   ]},
-
  {id:'b3',name:'Bloc 3 · Expression / Pic',accent:'var(--b3)',dates:'23 nov → 13 déc',focus:'Charges max, explosif, peu de volume, jambes fraîches. Objectif : benchmark 12/12.',
   weeks:[
-   {n:13,dates:'23 → 29 nov',sessions:[
-     {d:'Lundi',t:'Côte explosive + haut',i:['🏃 Côte 6×20 s à fond','🏋️ Développé couché <b>4×3 @ 102,5</b>','Tractions lestées 4×3']},
-     {d:'Mercredi',t:'Bas pic',i:['⚙️ Squat talons surélevés <b>4×3 @ 97,5</b>','Bulgares 3×5/j lourdes · Step-ups 3×6']},
-     {d:'Vendredi',t:'Vitesse affûtée + haut',i:['🏃 6×200 vite','🏋️ Militaire 4×3 · Tirage 4×4']},
-     {d:'Dimanche',t:'Longue modérée',i:['🏃 110 min facile · bilan']},
-   ]},
-   {n:14,dates:'30 nov → 6 déc',sessions:[
-     {d:'Lundi',t:'Côte explosive + haut',i:['🏃 Côte 6×25 s à fond','🏋️ Développé couché <b>4×2 @ 105</b>','Tractions lestées 4×3']},
-     {d:'Mercredi',t:'Bas pic',i:['⚙️ Squat talons surélevés <b>4×3 @ 100</b>','Bulgares 3×5/j · Step-ups 3×6']},
-     {d:'Vendredi',t:'Vitesse + haut',i:['🏃 6×200 plus vite','🏋️ Militaire 4×3 · Tirage 4×4']},
-     {d:'Dimanche',t:'Longue modérée',i:['🏃 100 min facile · bilan']},
-   ]},
-   {n:15,dates:'7 → 13 déc',sessions:[
-     {d:'Lundi',t:'Affûtage — côte + haut',i:['🏃 Côte 5×20 s (garde du jus)','🏋️ Développé couché <b>3×2 @ 107,5</b>','Tractions lestées 3×3']},
-     {d:'Mercredi',t:'Affûtage — bas',i:['⚙️ Squat talons surélevés <b>3×2 @ 102,5</b> (qualité)','Bulgares 2×5/j']},
-     {d:'Vendredi',bm:'J-1',t:'Déblocage léger',i:['🏃 4×150 vifs + mobilité','veille de benchmark : bien manger, bien dormir']},
-     {d:'Samedi 12/12',bm:'BENCHMARK',t:'Jour test du pic',i:['🏔️ D+ chargé, sac — mesure ta forme','compare au benchmark de juillet']},
-     {d:'Dimanche',t:'Récup + bilan de pic',i:['🏃 40–60 min très facile ou repos','➡️ ensuite : taper, Oslo, re-tests 26/01']},
-   ]},
+   wk(13,'23 → 29 nov',false,[
+     R('Lundi','Côte explosive',['🏃 Côte 6×20 s à fond (récup longue)']), HA('4×3 @ 102,5'),
+     L('Mercredi','Bas pic',['⚙️ Squat talons surélevés <b>4×3 @ 97,5</b>','Bulgares 3×5/j lourdes · Step-ups 3×6']),
+     HB('4×3','4×3'), R('Vendredi 18h','Vitesse affûtée',['🏃 6×200 vite, récup complète']), SAT, R('Dimanche','Longue modérée',['🏃 110 min facile']),
+   ]),
+   wk(14,'30 nov → 6 déc',false,[
+     R('Lundi','Côte explosive',['🏃 Côte 6×25 s à fond']), HA('4×2 @ 105'),
+     L('Mercredi','Bas pic',['⚙️ Squat talons surélevés <b>4×3 @ 100</b>','Bulgares 3×5/j · Step-ups 3×6']),
+     HB('4×3','4×3'), R('Vendredi 18h','Vitesse',['🏃 6×200 plus vite']), SAT, R('Dimanche','Longue modérée',['🏃 100 min facile']),
+   ]),
+   wk(15,'7 → 13 déc',false,[
+     R('Lundi','Affûtage — côte',['🏃 Côte 5×20 s (garde du jus)']), HA('3×2 @ 107,5'),
+     L('Mercredi','Affûtage — bas',['⚙️ Squat talons surélevés <b>3×2 @ 102,5</b> (qualité)','Bulgares 2×5/j']),
+     HBd('3×3','mobilité'),
+     R('Vendredi','Déblocage léger (J-1)',['🏃 4×150 vifs + mobilité','veille de benchmark : bien manger, bien dormir']),
+     {k:'rest',d:'Samedi 12/12',t:'BENCHMARK — jour test',i:['🏔️ D+ chargé, sac — mesure ta forme','compare au benchmark de juillet'],bm:'BENCHMARK'},
+     R('Dimanche','Récup + bilan de pic',['🏃 40-60 min très facile ou repos','➡️ ensuite : taper, Oslo, re-tests 26/01']),
+   ]),
   ]},
 ];
-
-/* ---------- render ---------- */
-function el(tag,cls,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
-
+function el(t,c,h){const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
 function renderBlock(b){
-  const sec=document.getElementById('sec-'+b.id);
-  sec.style.setProperty('--accent',b.accent);
-  const head=el('div','sechead');
-  head.appendChild(el('h2',null,b.name.split('·')[1].trim()));
-  head.appendChild(el('span','tag',b.dates));
-  sec.appendChild(head);
-  const bar=el('div','accentbar');bar.style.background=b.accent;sec.appendChild(bar);
-  sec.appendChild(el('p','secfocus',b.focus));
-
-  const prog=el('div','prog');
-  prog.innerHTML='<div class="bar"><div class="fill" style="background:'+b.accent+'"></div></div><div class="num"></div>';
-  sec.appendChild(prog);
-
+  const sec=document.getElementById('sec-'+b.id);sec.style.setProperty('--accent',b.accent);
+  const head=el('div','sechead');head.appendChild(el('h2',null,b.name.split('·')[1].trim()));head.appendChild(el('span','tag',b.dates));sec.appendChild(head);
+  const bar=el('div','accentbar');bar.style.background=b.accent;sec.appendChild(bar);sec.appendChild(el('p','secfocus',b.focus));
+  const prog=el('div','prog');prog.innerHTML='<div class="bar"><div class="fill" style="background:'+b.accent+'"></div></div><div class="num"></div>';sec.appendChild(prog);
   b.weeks.forEach(w=>{
-    const wd=el('div','week'+(w.dl?' deload':''));
-    wd.style.setProperty('--accent',b.accent);
+    const wd=el('div','week'+(w.dl?' deload':''));wd.style.setProperty('--accent',b.accent);
     const badge=w.dl?'<span class="badge dl">Deload</span>':'';
     const head=el('div','whead');
-    head.innerHTML='<div class="wnum">S'+w.n+'</div>'+
-      '<div class="wmeta"><div class="wt">Semaine '+w.n+'</div><div class="wd">'+w.dates+'</div></div>'+
-      badge+'<div class="chev">▶</div>';
+    head.innerHTML='<div class="wnum">S'+w.n+'</div><div class="wmeta"><div class="wt">Semaine '+w.n+'</div><div class="wd">'+w.dates+'</div></div>'+badge+'<div class="chev">▶</div>';
     wd.appendChild(head);
     const body=el('div','wbody');
     w.sessions.forEach((s,si)=>{
-      const id=b.id+'-'+w.n+'-'+si;
-      const done=!!store.mem[id];
-      const sess=el('div','sess');
-      const extra=s.bm?'<span class="badge bm" style="margin-left:8px">'+s.bm+'</span>':'';
+      const id=b.id+'-'+w.n+'-'+si;const done=!!store.mem[id];
+      const sess=el('div','sess '+s.k);
+      const pill=s.k==='run'?'<span class="pill">course</span>':s.k==='lift'?'<span class="pill">muscu</span>':'<span class="pill">repos</span>';
+      const bm=s.bm?'<span class="badge bm">'+s.bm+'</span>':'';
       sess.innerHTML='<div class="chk'+(done?' done':'')+'" data-id="'+id+'" role="checkbox" aria-checked="'+done+'" tabindex="0"></div>'+
-        '<div class="sbody'+(done?' done':'')+'"><div class="sday">'+s.d+(s.o?' <small>'+s.o+'</small>':'')+extra+'</div>'+
-        '<ul class="items">'+s.i.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>';
+        '<div class="sbody'+(done?' done':'')+'"><div class="sday">'+s.d+' '+pill+bm+'</div>'+
+        '<ul class="items">'+s.i.map(x=>'<li><span>'+x+'</span></li>').join('')+'</ul></div>';
       body.appendChild(sess);
     });
-    wd.appendChild(body);
-    sec.appendChild(wd);
+    wd.appendChild(body);sec.appendChild(wd);
     head.addEventListener('click',()=>wd.classList.toggle('open'));
   });
   updateProg(b.id);
 }
-
-function updateProg(bid){
-  const sec=document.getElementById('sec-'+bid);
-  const chks=sec.querySelectorAll('.chk');
-  const done=sec.querySelectorAll('.chk.done').length;
-  const pct=chks.length?Math.round(done/chks.length*100):0;
-  sec.querySelector('.fill').style.width=pct+'%';
-  sec.querySelector('.prog .num').textContent=done+' / '+chks.length+' séances';
-}
-
-function toggle(chk){
-  const id=chk.dataset.id;const now=!chk.classList.contains('done');
-  chk.classList.toggle('done',now);chk.setAttribute('aria-checked',now);
-  chk.nextElementSibling.classList.toggle('done',now);
-  if(now)store.mem[id]=1;else delete store.mem[id];
-  store.save();
-  updateProg(id.split('-')[0]);
-}
-
-/* tabs */
-document.getElementById('tabs').addEventListener('click',e=>{
-  const t=e.target.closest('.tab');if(!t)return;
-  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
-  document.querySelectorAll('main section').forEach(x=>x.classList.remove('on'));
-  t.classList.add('on');
-  document.getElementById('sec-'+t.dataset.sec).classList.add('on');
-  window.scrollTo({top:0,behavior:'smooth'});
-});
-
-/* delegate checkbox */
+function updateProg(bid){const sec=document.getElementById('sec-'+bid);const chks=sec.querySelectorAll('.chk');const done=sec.querySelectorAll('.chk.done').length;const pct=chks.length?Math.round(done/chks.length*100):0;sec.querySelector('.fill').style.width=pct+'%';sec.querySelector('.prog .num').textContent=done+' / '+chks.length+' séances';}
+function toggle(chk){const id=chk.dataset.id;const now=!chk.classList.contains('done');chk.classList.toggle('done',now);chk.setAttribute('aria-checked',now);chk.nextElementSibling.classList.toggle('done',now);if(now)store.mem[id]=1;else delete store.mem[id];store.save();updateProg(id.split('-')[0]);}
+document.getElementById('tabs').addEventListener('click',e=>{const t=e.target.closest('.tab');if(!t)return;document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));document.querySelectorAll('main section').forEach(x=>x.classList.remove('on'));t.classList.add('on');document.getElementById('sec-'+t.dataset.sec).classList.add('on');window.scrollTo({top:0,behavior:'smooth'});});
 document.querySelector('main').addEventListener('click',e=>{const c=e.target.closest('.chk');if(c)toggle(c);});
-document.querySelector('main').addEventListener('keydown',e=>{if((e.key===' '||e.key==='Enter')){const c=e.target.closest('.chk');if(c){e.preventDefault();toggle(c);}}});
-
-/* boot */
+document.querySelector('main').addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){const c=e.target.closest('.chk');if(c){e.preventDefault();toggle(c);}}});
 (async()=>{await store.load();blocks.forEach(renderBlock);})();
 
 /* PWA: service worker (permet install + usage hors-ligne) */
