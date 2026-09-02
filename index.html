@@ -92,6 +92,11 @@
   .items{list-style:none;margin-top:5px;display:flex;flex-direction:column;gap:3px}
   .items li{font-size:13.5px;color:#CBD5DD}
   .items b{font-family:var(--mono);font-weight:700;color:var(--snow);font-size:12.5px}
+  .exrow{display:flex;align-items:center;gap:10px}
+  .exn{flex:1;min-width:0}
+  .loginp{flex:0 0 auto;width:74px;background:var(--granite3);border:1px solid var(--faint);border-radius:7px;color:var(--snow);font-family:var(--mono);font-size:13px;padding:6px 8px;text-align:center}
+  .loginp:focus{outline:none;border-color:var(--ice);background:var(--granite)}
+  .loginp::placeholder{color:var(--mist);opacity:.55}
   .satline{font-family:var(--mono);font-size:11px;color:var(--mist);padding:10px 0 2px;border-top:1px dashed var(--faint);margin-top:2px}
   .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   @media(max-width:720px){.cards{grid-template-columns:1fr}}
@@ -226,7 +231,7 @@ function renderCycle(cy){
       const sess=el('div','sess '+s.k);
       sess.innerHTML='<div class="chk'+(done?' done':'')+'" data-id="'+id+'" role="checkbox" aria-checked="'+done+'" tabindex="0"></div>'+
         '<div class="sbody'+(done?' done':'')+'"><div class="sday">'+s.t+' <span class="pill">'+s.p+'</span></div>'+
-        '<ul class="items">'+s.i.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>';
+        '<ul class="items">'+s.i.map(function(x,xi){var lid="L:"+id+"-"+xi;var lv=(store.mem[lid]||"").replace(/"/g,"&quot;");return '<li class="exrow"><span class="exn">'+x+'</span><input class="loginp" type="text" inputmode="decimal" placeholder="kg" data-log="'+lid+'" value="'+lv+'"></li>';}).join('')+'</ul></div>';
       body.appendChild(sess);
     });
     body.appendChild(el('div','satline','+ en parallèle : 🥊 2 boxe · 🏔️ rando week-end · 🏃 run libre'));
@@ -240,6 +245,7 @@ function toggle(chk){const id=chk.dataset.id;const now=!chk.classList.contains('
 document.getElementById('tabs').addEventListener('click',e=>{const t=e.target.closest('.tab');if(!t)return;document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));document.querySelectorAll('main section').forEach(x=>x.classList.remove('on'));t.classList.add('on');document.getElementById('sec-'+t.dataset.sec).classList.add('on');window.scrollTo({top:0,behavior:'smooth'});});
 document.querySelector('main').addEventListener('click',e=>{const c=e.target.closest('.chk');if(c)toggle(c);});
 document.querySelector('main').addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){const c=e.target.closest('.chk');if(c){e.preventDefault();toggle(c);}}});
+document.querySelector('main').addEventListener('input',e=>{const inp=e.target.closest('.loginp');if(!inp)return;const k=inp.dataset.log,v=inp.value.trim();if(v)store.mem[k]=v;else delete store.mem[k];store.save();});
 store.load();
 cycles.forEach(renderCycle);
 </script>
