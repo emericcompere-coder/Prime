@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Programme Prime — rotation 4 jours périodisée en 3 cycles, 31 août → 1er janvier.">
+<meta name="description" content="Programme Prime — rotation 4 jours en boucle, périodisée en 3 cycles, séquencée par tours.">
 <meta name="theme-color" content="#161B21">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -33,10 +33,10 @@
   .topo svg{position:absolute;inset:0;width:100%;height:100%}
   .wrap{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
   header{padding:46px 0 22px;border-bottom:1px solid var(--faint)}
-  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--ice)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ice)}
   h1{font-family:var(--disp);font-weight:700;font-size:clamp(46px,9vw,86px);line-height:.9;letter-spacing:.01em;text-transform:uppercase;margin:10px 0 6px}
   h1 .thin{color:var(--mist);font-weight:500}
-  .sub{color:var(--mist);max-width:56ch;font-size:15px}
+  .sub{color:var(--mist);max-width:58ch;font-size:15px}
   .band{display:flex;gap:8px;margin:24px 0 4px}
   .seg{flex:1;border:1px solid var(--faint);border-radius:12px;background:linear-gradient(180deg,var(--granite2),var(--granite));padding:14px 15px;border-top:3px solid var(--sc)}
   .seg .cn{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--sc)}
@@ -69,7 +69,7 @@
   .week{border:1px solid var(--faint);border-radius:12px;margin-bottom:12px;overflow:hidden;background:var(--granite2)}
   .week.deload{border-color:rgba(88,198,216,.35)}
   .whead{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none}
-  .wnum{font-family:var(--disp);font-weight:700;font-size:24px;line-height:1;min-width:46px;color:var(--accent)}
+  .wnum{font-family:var(--disp);font-weight:700;font-size:24px;line-height:1;min-width:52px;color:var(--accent)}
   .wmeta{flex:1}
   .wmeta .wt{font-family:var(--disp);font-weight:600;font-size:18px;text-transform:uppercase;letter-spacing:.02em}
   .wmeta .wd{font-family:var(--mono);font-size:11px;color:var(--mist)}
@@ -107,6 +107,7 @@
   .card li{font-size:14px;color:#CBD5DD;padding-left:16px;position:relative}
   .card li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--ice);opacity:.7}
   .card li b{color:var(--snow)}
+  .whytours{grid-column:1/-1;background:color-mix(in srgb,var(--ice) 7%,var(--granite2));border-left:3px solid var(--ice)}
   footer{border-top:1px solid var(--faint);padding:22px 0;padding-bottom:calc(40px + env(safe-area-inset-bottom));color:var(--mist);font-size:12.5px;font-family:var(--mono)}
 </style>
 </head>
@@ -119,13 +120,13 @@
 </div>
 <div class="wrap">
   <header>
-    <div class="eyebrow">Rotation 4 jours · 3 cycles · 31 août → 1er janvier</div>
+    <div class="eyebrow">Rotation 4 jours en boucle · 3 cycles · à ton rythme</div>
     <h1>Programme <span class="thin">Prime</span></h1>
-    <p class="sub">Ta rotation 4 jours comme squelette, périodisée en trois cycles qui montent en intensité. Coche chaque séance : les barres se remplissent, tes coches sont gardées sur le téléphone.</p>
+    <p class="sub">Tu enchaînes des tours de 4 séances en continu, tu t'entraînes tous les jours. Pas de calendrier imposé : tu coches chaque séance, la charge monte de tour en tour, tout est gardé sur le téléphone.</p>
     <div class="band">
-      <div class="seg" style="--sc:var(--c1)"><div class="cn">Cycle 1</div><div class="ct">Fondation</div><div class="cr">Volume · reps hautes (8)</div><div class="cd">31 août → 11 oct</div></div>
-      <div class="seg" style="--sc:var(--c2)"><div class="cn">Cycle 2</div><div class="ct">Force</div><div class="cr">Lourd · reps basses (5)</div><div class="cd">12 oct → 22 nov</div></div>
-      <div class="seg" style="--sc:var(--c3)"><div class="cn">Cycle 3</div><div class="ct">Puissance</div><div class="cr">Explosif · reps très basses (2-3)</div><div class="cd">23 nov → 1er janv</div></div>
+      <div class="seg" style="--sc:var(--c1)"><div class="cn">Cycle 1</div><div class="ct">Fondation</div><div class="cr">Volume · reps 8</div><div class="cd">10 tours · à ton rythme</div></div>
+      <div class="seg" style="--sc:var(--c2)"><div class="cn">Cycle 2</div><div class="ct">Force</div><div class="cr">Lourd · reps 5</div><div class="cd">10 tours · à ton rythme</div></div>
+      <div class="seg" style="--sc:var(--c3)"><div class="cn">Cycle 3</div><div class="ct">Puissance</div><div class="cr">Explosif · reps 2-3</div><div class="cd">10 tours · à ton rythme</div></div>
     </div>
   </header>
 </div>
@@ -137,7 +138,7 @@
 </div></nav>
 <main class="wrap">
   <section id="sec-over" class="on">
-    <div class="sechead"><h2>La logique</h2><span class="tag">rotation + 3 cycles</span></div>
+    <div class="sechead"><h2>La logique</h2><span class="tag">séquencé par tours</span></div>
     <div class="accentbar" style="background:var(--ice)"></div>
     <div class="cards">
       <div class="card"><h4><span class="dot"></span>La rotation 4 jours</h4><ul>
@@ -145,32 +146,37 @@
         <li><b>Séance 2</b> — Fractionné côte (cardio-explosif)</li>
         <li><b>Séance 3</b> — Dos / Biceps (tirage)</li>
         <li><b>Séance 4</b> — Clean + squat + push press + soulevé</li>
-        <li>Tu enchaînes en boucle ; une « Semaine » = un tour complet des 4 séances.</li>
+        <li>Un <b>Tour</b> = ce cycle complet de 4 séances. Tu les enchaînes en boucle.</li>
       </ul></div>
       <div class="card"><h4><span class="dot"></span>Ce qui change à chaque cycle</h4><ul>
-        <li><b>Cycle 1 :</b> reps hautes (8), on construit le volume et on rôde le complexe.</li>
-        <li><b>Cycle 2 :</b> reps basses (5), charges lourdes — la tension mécanique à fond.</li>
+        <li><b>Cycle 1 :</b> reps hautes (8), volume, on rôde le complexe.</li>
+        <li><b>Cycle 2 :</b> reps basses (5), lourd — la tension mécanique à fond.</li>
         <li><b>Cycle 3 :</b> reps très basses (2-3), explosif — on exprime la force.</li>
-        <li>Changer de schéma = repartir plus léger puis remonter : c'est ça, s'amuser avec la prog.</li>
+        <li>10 tours par cycle, puis on change de schéma.</li>
       </ul></div>
       <div class="card"><h4><span class="dot"></span>Progression (tension mécanique)</h4><ul>
-        <li><b>+2,5 kg / semaine</b> sur les mouvements de base tant que les reps passent propres.</li>
-        <li><b>Soulevé : +5 kg / semaine</b> au début (grosse marge).</li>
-        <li>Ça bloque → tu tiens une semaine, puis <b>−10 %</b> et tu repars.</li>
-        <li><b>Dernière semaine de chaque cycle = allégée</b> (repérée en bleu).</li>
+        <li><b>+2,5 kg</b> dès que tu passes toutes tes reps propres — souvent d'un tour à l'autre.</li>
+        <li><b>Soulevé :</b> tu montes plus vite au début (grosse marge).</li>
+        <li>Pas prêt ? Tu <b>répètes la charge</b> du tour, sans forcer.</li>
+        <li><b>Deload : tours 5 et 10</b> de chaque cycle (repérés en bleu).</li>
       </ul></div>
       <div class="card"><h4><span class="dot"></span>En parallèle</h4><ul>
         <li><b>🥊 Boxe</b> — au moins 2 × / semaine.</li>
         <li><b>🏔️ Rando</b> chargée & longue — presque chaque week-end.</li>
         <li><b>🏃 Run libre</b> — quand l'envie, souvent.</li>
-        <li>Jour cuit = repos, tu reprends le cycle où tu l'avais laissé.</li>
+        <li>Jour cuit = repos, tu reprends le tour où tu l'avais laissé.</li>
+      </ul></div>
+      <div class="card whytours"><h4><span class="dot"></span>Pourquoi des tours et pas des semaines</h4><ul>
+        <li>Tu t'entraînes tous les jours : un tour de 4 séances te prend <b>~4 jours, pas 7</b>.</li>
+        <li>Compter en semaines sous-estimait ton volume réel.</li>
+        <li>Là, tu avances au rythme de <b>tes séances</b> : ~10 tours par cycle te mènent vers janvier.</li>
       </ul></div>
     </div>
   </section>
   <section id="sec-c1"></section>
   <section id="sec-c2"></section>
   <section id="sec-c3"></section>
-  <footer>Programme Prime · Emeric · 31 août 2026 → 1er janvier 2027 — Les kilos sont des cibles : tu montes tant que la technique tient, tu allèges quand ça coince.</footer>
+  <footer>Programme Prime · Emeric · rotation en boucle, 3 cycles — Les kilos sont des cibles : tu montes tant que la technique tient, tu allèges quand ça coince.</footer>
 </main>
 <script>
 const KEY='prime_cycles_v1';
@@ -179,55 +185,60 @@ const store={mem:{},
   save(){try{localStorage.setItem(KEY,JSON.stringify(this.mem));}catch(e){}}
 };
 const nf=n=>String(n).replace('.',',');
-const MOIS=['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
-const start=new Date(2026,7,31);
-const fd=d=>d.getDate()+' '+MOIS[d.getMonth()];
-const bench=[75,77.5,80,82.5,85,80, 85,87.5,90,92.5,95,87.5, 97.5,100,102.5,105,100,95];
-const row  =[55,57.5,60,62.5,65,60, 65,67.5,70,72.5,75,70, 72.5,75,77.5,80,75,70];
-const cplx =[40,42.5,45,47.5,50,45, 47.5,50,52.5,55,57.5,52.5, 55,57.5,60,62.5,57.5,55];
-const sdt  =[100,105,110,115,120,110, 125,130,135,140,145,130, 130,132.5,135,137.5,130,120];
-const dlw=new Set([6,12,18]);
+const dl=new Set([5,10]);
 const cycles=[
- {id:'c1',name:'Cycle 1 · Fondation',accent:'var(--c1)',dates:'31 août → 11 oct',focus:'Volume et base. Reps hautes, on rôde le complexe et on remplit le réservoir.',
-  scheme:{b:'4×8',r:'4×8',c:'5×3',s:'3×6',cote:'8-10 × 40-60 s'},from:0,to:5},
- {id:'c2',name:'Cycle 2 · Force',accent:'var(--c2)',dates:'12 oct → 22 nov',focus:'Charges lourdes, reps basses. La tension mécanique au premier plan.',
-  scheme:{b:'5×5',r:'5×5',c:'5×3',s:'4×4',cote:'puissance 6-8 × 60 s'},from:6,to:11},
- {id:'c3',name:'Cycle 3 · Puissance',accent:'var(--c3)',dates:'23 nov → 1er janvier',focus:'Explosif, reps très basses, intention max. On exprime la force et on finit fort.',
-  scheme:{b:'4×3',r:'4×4',c:'6×2',s:'3×3',cote:'explosive 6 × 20-25 s'},from:12,to:17},
+ {id:'c1',name:'Cycle 1 · Fondation',accent:'var(--c1)',focus:'Volume et base. Reps hautes, on rôde le complexe et on remplit le réservoir. 10 tours.',
+  scheme:{cote:'8-10 × 40-60 s'},sc:{b:'4×8',r:'4×8',c:'5×3',s:'3×6'},
+  bench:[75,77.5,80,82.5,75,80,82.5,85,87.5,80],
+  row  :[55,57.5,60,62.5,55,60,62.5,65,67.5,60],
+  cplx :[40,42.5,45,47.5,42.5,47.5,50,52.5,55,50],
+  sdt  :[100,105,110,115,100,110,115,120,125,115]},
+ {id:'c2',name:'Cycle 2 · Force',accent:'var(--c2)',focus:'Charges lourdes, reps basses. La tension mécanique au premier plan. 10 tours.',
+  scheme:{cote:'puissance 6-8 × 60 s'},sc:{b:'5×5',r:'5×5',c:'5×3',s:'4×4'},
+  bench:[85,87.5,90,92.5,85,90,92.5,95,97.5,90],
+  row  :[65,67.5,70,72.5,65,70,72.5,75,77.5,70],
+  cplx :[50,52.5,55,57.5,52.5,55,57.5,60,60,55],
+  sdt  :[125,130,135,140,125,135,140,142.5,145,130]},
+ {id:'c3',name:'Cycle 3 · Puissance',accent:'var(--c3)',focus:'Explosif, reps très basses, intention max. On exprime la force et on finit fort. 10 tours.',
+  scheme:{cote:'explosive 6 × 20-25 s'},sc:{b:'4×3',r:'4×4',c:'6×2',s:'3×3'},
+  bench:[95,97.5,100,102.5,95,100,102.5,105,105,97.5],
+  row  :[72.5,75,77.5,80,72.5,77.5,80,80,82.5,75],
+  cplx :[55,57.5,60,62.5,55,60,62.5,62.5,65,57.5],
+  sdt  :[130,132.5,135,137.5,127.5,135,137.5,140,140,130]},
 ];
-function weekDates(gi){const a=new Date(start);a.setDate(a.getDate()+gi*7);const b=new Date(a);b.setDate(b.getDate()+6);return fd(a)+' – '+fd(b);}
-function sessions(gi,sc){
+function sessions(rd,sc,cote){
   return [
     {k:'lift',t:'Séance 1 · Pecs / Triceps',p:'poussée',i:[
-      '🏋️ Développé couché <b>'+sc.b+' @ '+nf(bench[gi])+' kg</b>',
+      '🏋️ Développé couché <b>'+sc.b+' @ '+nf(rd.b)+' kg</b>',
       'Développé incliné haltères 3×8-10','Dips lestés 3×8-10','Extensions triceps 3×10-12']},
     {k:'run',t:'Séance 2 · Fractionné côte',p:'cardio',i:[
       'Corde à sauter 5-10 min (échauffement)',
-      '🏃 Fractionné côte <b>'+sc.cote+'</b>, récup en descente','Gainage / abdos 3 séries']},
+      '🏃 Fractionné côte <b>'+cote+'</b>, récup en descente','Gainage / abdos 3 séries']},
     {k:'lift',t:'Séance 3 · Dos / Biceps',p:'tirage',i:[
-      '🏋️ Rowing barre <b>'+sc.r+' @ '+nf(row[gi])+' kg</b>',
+      '🏋️ Rowing barre <b>'+sc.r+' @ '+nf(rd.r)+' kg</b>',
       'Tractions lestées 4×6 (+2,5 kg quand ça passe)','Tirage vertical 3×10-12','Curls barre + haltères 3×10-12']},
     {k:'lift',t:'Séance 4 · Clean · Squat · Push press',p:'full-body',i:[
-      '🏋️ Épaulé + front squat + push press <b>'+sc.c+' @ '+nf(cplx[gi])+' kg</b>',
-      '🏋️ Soulevé de terre <b>'+sc.s+' @ '+nf(sdt[gi])+' kg</b>','Gainage lourd 3 séries']},
+      '🏋️ Épaulé + front squat + push press <b>'+sc.c+' @ '+nf(rd.c)+' kg</b>',
+      '🏋️ Soulevé de terre <b>'+sc.s+' @ '+nf(rd.s)+' kg</b>','Gainage lourd 3 séries']},
   ];
 }
 function el(t,c,h){const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
 function renderCycle(cy){
   const sec=document.getElementById('sec-'+cy.id);sec.style.setProperty('--accent',cy.accent);
-  const head=el('div','sechead');head.appendChild(el('h2',null,cy.name.split('·')[1].trim()));head.appendChild(el('span','tag',cy.dates));sec.appendChild(head);
+  const head=el('div','sechead');head.appendChild(el('h2',null,cy.name.split('·')[1].trim()));head.appendChild(el('span','tag','10 tours de 4 séances'));sec.appendChild(head);
   const bar=el('div','accentbar');bar.style.background=cy.accent;sec.appendChild(bar);
   sec.appendChild(el('p','secfocus',cy.focus));
   const prog=el('div','prog');prog.innerHTML='<div class="bar"><div class="fill" style="background:'+cy.accent+'"></div></div><div class="num"></div>';sec.appendChild(prog);
-  for(let gi=cy.from;gi<=cy.to;gi++){
-    const gw=gi+1;const isdl=dlw.has(gw);
+  for(let ri=0;ri<cy.bench.length;ri++){
+    const rn=ri+1;const isdl=dl.has(rn);
+    const rd={b:cy.bench[ri],r:cy.row[ri],c:cy.cplx[ri],s:cy.sdt[ri]};
     const wd=el('div','week'+(isdl?' deload':''));wd.style.setProperty('--accent',cy.accent);
     const head=el('div','whead');
-    head.innerHTML='<div class="wnum">S'+gw+'</div><div class="wmeta"><div class="wt">Semaine '+gw+'</div><div class="wd">'+weekDates(gi)+'</div></div>'+(isdl?'<span class="badge">Allégée −10%</span>':'')+'<div class="chev">▶</div>';
+    head.innerHTML='<div class="wnum">T'+rn+'</div><div class="wmeta"><div class="wt">Tour '+rn+'</div><div class="wd">cycle de 4 séances</div></div>'+(isdl?'<span class="badge">Allégé −10%</span>':'')+'<div class="chev">▶</div>';
     wd.appendChild(head);
     const body=el('div','wbody');
-    sessions(gi,cy.scheme).forEach((s,si)=>{
-      const id=cy.id+'-'+gw+'-'+si;const done=!!store.mem[id];
+    sessions(rd,cy.sc,cy.scheme.cote).forEach((s,si)=>{
+      const id=cy.id+'-'+rn+'-'+si;const done=!!store.mem[id];
       const sess=el('div','sess '+s.k);
       sess.innerHTML='<div class="chk'+(done?' done':'')+'" data-id="'+id+'" role="checkbox" aria-checked="'+done+'" tabindex="0"></div>'+
         '<div class="sbody'+(done?' done':'')+'"><div class="sday">'+s.t+' <span class="pill">'+s.p+'</span></div>'+
