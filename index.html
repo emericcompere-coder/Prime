@@ -145,7 +145,7 @@
         <li><b>Séance 1</b> — Pecs / Triceps (poussée)</li>
         <li><b>Séance 2</b> — Fractionné côte (cardio-explosif)</li>
         <li><b>Séance 3</b> — Dos / Biceps (tirage)</li>
-        <li><b>Séance 4</b> — Clean + squat + push press + soulevé</li>
+        <li><b>Séance 4</b> — Épaulé-jeté + french contrast + pendlay + bulgares</li>
         <li>Un <b>Tour</b> = ce cycle complet de 4 séances. Tu les enchaînes en boucle.</li>
       </ul></div>
       <div class="card"><h4><span class="dot"></span>Ce qui change à chaque cycle</h4><ul>
@@ -217,9 +217,13 @@ function sessions(rd,sc,cote){
     {k:'lift',t:'Séance 3 · Dos / Biceps',p:'tirage',i:[
       '🏋️ Rowing barre <b>'+sc.r+' @ '+nf(rd.r)+' kg</b>',
       'Tractions lestées 4×6 (+2,5 kg quand ça passe)','Tirage vertical 3×10-12','Curls barre + haltères 3×10-12']},
-    {k:'lift',t:'Séance 4 · Clean · Squat · Push press',p:'full-body',i:[
-      '🏋️ Épaulé + front squat + push press <b>'+sc.c+' @ '+nf(rd.c)+' kg</b>',
-      '🏋️ Soulevé de terre <b>'+sc.s+' @ '+nf(rd.s)+' kg</b>','Gainage lourd 3 séries']},
+    {k:'lift',t:'Séance 4 · Haltéro + Puissance jambes',p:'full-body',i:[
+      '🔥 Échauffement épaules : Cressey rotation externe + Y-T-W + Hip CARs (prépa haltéro, protège ton épaule)',
+      '🏋️ Épaulé-jeté (hang power clean + jerk) <b>'+sc.c+' @ '+nf(rd.c)+' kg</b> · vitesse max, focus 2e tirage',
+      '⚡ French Contrast — enchaîné, 3 min entre séries : Front squat 3×3 lourd → Box jump 3×3 → Jump squat 3×5 léger → Saut vertical assisté élastique ×3 (survitesse)',
+      '🏋️ Pendlay Row 4×6 explosif <b>~'+nf(rd.s)+' kg</b> · barre au sol à chaque rep',
+      '🦵 Bulgarian split squat 3×8 par jambe (~25 kg DB)',
+      '💪 Finish épaules : tirage poitrine à la barre, à la poulie 3×12-15 (meilleur ressenti au câble)']},
   ];
 }
 function el(t,c,h){const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
