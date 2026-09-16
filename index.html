@@ -145,7 +145,7 @@
         <li><b>Séance 1</b> — Pecs / Triceps (poussée)</li>
         <li><b>Séance 2</b> — Fractionné côte (cardio-explosif)</li>
         <li><b>Séance 3</b> — Dos / Biceps (tirage)</li>
-        <li><b>Séance 4</b> — Épaulé-jeté + french contrast + pendlay + bulgares</li>
+        <li><b>Séance 4</b> — Cardio intense au choix</li>
         <li>Un <b>Tour</b> = ce cycle complet de 4 séances. Tu les enchaînes en boucle.</li>
       </ul></div>
       <div class="card"><h4><span class="dot"></span>Ce qui change à chaque cycle</h4><ul>
@@ -223,13 +223,10 @@ function sessions(rd,sc,cote){
     {k:'lift',t:'Séance 3 · Dos / Biceps',p:'tirage',i:[
       '🏋️ Tirage horizontal <b>'+sc.r+' @ '+nf(rd.r-2.5)+' kg</b> · repos 75-90 s',
       'Tractions lestées 4×6 (+2,5 kg quand ça passe)','Tirage vertical 3×10-12','Curls barre + haltères 3×10-12']},
-    {k:'lift',t:'Séance 4 · Haltéro + Puissance jambes',p:'full-body',i:[
-      '🔥 Échauffement épaules : Cressey rotation externe + Y-T-W + Hip CARs (prépa haltéro, protège ton épaule)',
-      '🏋️ Épaulé-jeté (hang power clean + jerk) <b>'+sc.c+' @ '+nf(rd.c-2.5)+' kg</b> · vitesse max, focus 2e tirage · repos 90 s',
-      '⚡ French Contrast — enchaîné, 2 min entre séries (mini pour la PAP) : Front squat 3×3 lourd → Box jump 3×3 → Jump squat 3×5 léger → Saut vertical assisté élastique ×3 (survitesse)',
-      '🏋️ Pendlay Row 4×6 explosif <b>~'+nf(rd.s-5)+' kg</b> · barre au sol · repos 75 s',
-      '🦵 Bulgarian split squat 3×8 par jambe (~25 kg DB)',
-      '💪 Finish épaules : tirage poitrine à la barre, à la poulie 3×12-15 (meilleur ressenti au câble)']},
+    {k:'run',t:'Séance 4 · Cardio intense au choix',p:'cardio',i:[
+      'Échauffement 5-10 min',
+      '🔥 Cardio intense au choix (25-35 min) : corde à sauter, rameur, vélo, sprint côte, HIIT... à fond, hors zone confort',
+      'Gainage / abdos 3 séries']},
   ];
 }
 function el(t,c,h){const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
