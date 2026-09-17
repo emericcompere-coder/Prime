@@ -219,7 +219,7 @@ function sessions(rd,sc,cote){
       'Développé incliné au cadre guidé 3×8-10','Dips lestés 3×8-10','Extensions triceps 3×10-12']},
     {k:'run',t:'Séance 2 · Cardio intense au choix',p:'cardio',i:[
       'Échauffement 5-10 min',
-      '🔥 EMOM montant 20 min — Box jump + Burpees : minute 1 → 1 box jump + 1 burpee, minute 2 → 2 + 2, minute 3 → 3 + 3... +1 répétition de chaque à chaque minute pendant 20 min',
+      '🔥 Cardio intense au choix (25-35 min) : corde à sauter, rameur, vélo, sprint côte, HIIT... à fond, hors zone confort',
       'Gainage / abdos 3 séries']},
     {k:'lift',t:'Séance 3 · Dos / Biceps',p:'tirage',i:[
       '🏋️ Tirage horizontal <b>'+sc.r+' @ '+nf(rd.r-2.5)+' kg</b> · repos 75-90 s',
@@ -233,6 +233,14 @@ function sessions(rd,sc,cote){
       '💪 Finish épaules : tirage poitrine à la barre, à la poulie 3×12-15 (meilleur ressenti au câble)']},
   ];
 }
+// Surcharges ponctuelles : contenu spécifique pour une séance d'un tour donné (clé = "cycle-tour-indexSéance", ex. c1-4-1 = Cycle 1, Tour 4, Séance 2).
+// Le reste du programme (tous les autres tours) garde le contenu générique de sessions() ci-dessus.
+const sessionOverrides = {
+  'c1-4-1': {t:'Séance 2 · EMOM Box jump + Burpees',i:[
+    'Échauffement 5-10 min',
+    '🔥 EMOM montant 20 min — Box jump + Burpees : minute 1 → 1 box jump + 1 burpee, minute 2 → 2 + 2, minute 3 → 3 + 3... +1 répétition de chaque à chaque minute pendant 20 min',
+    'Gainage / abdos 3 séries']},
+};
 function el(t,c,h){const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
 function renderCycle(cy){
   const sec=document.getElementById('sec-'+cy.id);sec.style.setProperty('--accent',cy.accent);
@@ -248,8 +256,9 @@ function renderCycle(cy){
     head.innerHTML='<div class="wnum">T'+rn+'</div><div class="wmeta"><div class="wt">Tour '+rn+'</div><div class="wd">cycle de 4 séances</div></div>'+(isdl?'<span class="badge">Allégé −10%</span>':'')+'<div class="chev">▶</div>';
     wd.appendChild(head);
     const body=el('div','wbody');
-    sessions(rd,cy.sc,cy.scheme.cote).forEach((s,si)=>{
+    sessions(rd,cy.sc,cy.scheme.cote).forEach((s0,si)=>{
       const id=cy.id+'-'+rn+'-'+si;const done=!!store.mem[id];
+      const s=sessionOverrides[id]?Object.assign({},s0,sessionOverrides[id]):s0;
       const sess=el('div','sess '+s.k);
       sess.innerHTML='<div class="chk'+(done?' done':'')+'" data-id="'+id+'" role="checkbox" aria-checked="'+done+'" tabindex="0"></div>'+
         '<div class="sbody'+(done?' done':'')+'"><div class="sday">'+s.t+' <span class="pill">'+s.p+'</span></div>'+
