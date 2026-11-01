@@ -127,13 +127,13 @@
 </div>
 <div class="wrap">
   <header>
-    <div class="eyebrow">9 semaines · 26 oct → 27 déc · cœur + renfo</div>
+    <div class="eyebrow">9 semaines · 2 nov → 3 janv · cœur + force</div>
     <h1>Programme <span class="thin">Prime</span></h1>
     <p class="sub">Trois séances course en crescendo (endurance fondamentale, fractionné en côte, piste) et une rotation de 5 séances de force (couché, tractions, squat, militaire, soulevé de terre). Tu coches chaque séance, tu notes tes charges et tes temps, tout reste sur le téléphone.</p>
     <div class="band">
-      <div class="seg" style="--sc:var(--c1)"><div class="cn">Bloc 1</div><div class="ct">Construire</div><div class="cr">Semaines 1 à 4</div><div class="cd">26 oct → 22 nov · S4 allégée</div></div>
-      <div class="seg" style="--sc:var(--c2)"><div class="cn">Bloc 2</div><div class="ct">Monter</div><div class="cr">Semaines 5 à 8</div><div class="cd">23 nov → 20 déc · S8 allégée</div></div>
-      <div class="seg" style="--sc:var(--c3)"><div class="cn">Test</div><div class="ct">Semaine 9</div><div class="cr">Test 5 km chrono</div><div class="cd">21 → 27 déc</div></div>
+      <div class="seg" style="--sc:var(--c1)"><div class="cn">Bloc 1</div><div class="ct">Construire</div><div class="cr">Semaines 1 à 4</div><div class="cd">2 → 29 nov · S4 allégée</div></div>
+      <div class="seg" style="--sc:var(--c2)"><div class="cn">Bloc 2</div><div class="ct">Monter</div><div class="cr">Semaines 5 à 8</div><div class="cd">30 nov → 27 déc · S8 allégée</div></div>
+      <div class="seg" style="--sc:var(--c3)"><div class="cn">Test</div><div class="ct">Semaine 9</div><div class="cr">Test 5 km chrono</div><div class="cd">28 déc → 3 janv</div></div>
     </div>
   </header>
 </div>
@@ -185,7 +185,7 @@
       </ul></div>
       <div class="card"><h4><span class="dot"></span>Calendrier</h4><ul>
         <li>Force mardi, jeudi, samedi : un tour de 5 séances dure environ 1,7 semaine.</li>
-        <li>La rotation démarre <b>samedi 31 octobre</b> et fait <b>5 tours complets</b> jusqu'au samedi 26 décembre.</li>
+        <li>La rotation démarre <b>mardi 3 novembre</b> : 27 séances de force, soit <b>5 tours complets</b> et les 2 premières séances du 6e, jusqu'au samedi 2 janvier.</li>
         <li>Squat ou soulevé un jeudi : la piste du vendredi sera plus dure. Tu la fais propre, sans forcer.</li>
       </ul></div>
       <div class="card"><h4><span class="dot"></span>Ménager l'épaule</h4><ul>
@@ -198,26 +198,26 @@
         <li><b>🏔️ Rando</b> chargée — le dimanche ou le week-end quand tu peux.</li>
         <li>Le dimanche est libre : rando, boxe, ou vrai repos si le corps le demande.</li>
       </ul></div>
-      <div class="card whytours"><h4><span class="dot"></span>Après le 27 décembre</h4><ul>
-        <li>La semaine 9 donne ton chrono de départ sur 5 km.</li>
-        <li>Du 28 au 31 décembre : libre, tu récupères.</li>
-        <li>Le 1er janvier : nouveau programme.</li>
+      <div class="card whytours"><h4><span class="dot"></span>Fin du programme</h4><ul>
+        <li>La semaine 9 (28 déc → 3 janv) donne ton chrono de départ sur 5 km.</li>
+        <li>Dimanche 3 janvier : libre, tu récupères.</li>
+        <li>Lundi 4 janvier : nouveau programme.</li>
       </ul></div>
     </div>
   </section>
   <section id="sec-b1"></section>
   <section id="sec-b2"></section>
   <section id="sec-b3"></section>
-  <footer>Programme Prime · Emeric · 26 oct → 27 déc 2026 — Crescendo sur la course, charge qui monte à chaque tour sur la force. Tu écoutes ton corps, on ajuste.</footer>
+  <footer>Programme Prime · Emeric · 2 nov 2026 → 3 janv 2027 — Crescendo sur la course, charge qui monte à chaque tour sur la force. Tu écoutes ton corps, on ajuste.</footer>
 </main>
 <script>
-const KEY='prime_v3';
+const KEY='prime_v5';
 const store={mem:{},
   load(){try{const r=localStorage.getItem(KEY);if(r)this.mem=JSON.parse(r);}catch(e){this.mem={};}return this.mem;},
   save(){try{localStorage.setItem(KEY,JSON.stringify(this.mem));}catch(e){}}
 };
 const dl=new Set([4,8]);
-const DATES=['26 oct → 1 nov','2 → 8 nov','9 → 15 nov','16 → 22 nov','23 → 29 nov','30 nov → 6 déc','7 → 13 déc','14 → 20 déc','21 → 27 déc'];
+const DATES=['2 → 8 nov','9 → 15 nov','16 → 22 nov','23 → 29 nov','30 nov → 6 déc','7 → 13 déc','14 → 20 déc','21 → 27 déc','28 déc → 3 janv'];
 const EF=["5 km","6 km","7 km","5 km","8 km","9 km","10 km","6 km","5 km"];
 const COTE=["8×40 s","9×40 s","10×40 s","5×40 s relâché","8×45 s","6×60 s","7×60 s","4×60 s relâché",null];
 const FRI=[
@@ -232,17 +232,17 @@ const FRI=[
  "2×100 m · 1×200 m · 1×300 m à 95 % (étape vers le 400 m)"
 ];
 const BLOCKS=[
- {id:'b1',cid:'c1',name:'Bloc 1 · Construire',accent:'var(--c1)',weeks:[1,2,3,4],focus:'Tu poses la base : les séances course montent doucement et la rotation de force démarre samedi 31 octobre. La semaine 4 est allégée.'},
+ {id:'b1',cid:'c1',name:'Bloc 1 · Construire',accent:'var(--c1)',weeks:[1,2,3,4],focus:'Tu poses la base : les séances course montent doucement et la rotation de force démarre mardi 3 novembre. La semaine 4 est allégée.'},
  {id:'b2',cid:'c2',name:'Bloc 2 · Monter',accent:'var(--c2)',weeks:[5,6,7,8],focus:'Les séances course s’allongent et la piste monte jusqu’au 200 m. La semaine 8 est allégée.'},
  {id:'b3',cid:'c3',name:'Test · Semaine 9',accent:'var(--c3)',weeks:[9],focus:'Tu arrives frais. Mercredi : test 5 km chrono. Le reste de la semaine est léger.'},
 ];
 const nf=n=>String(n).replace('.',',');
 const LOADS={
- bench:{h:[80,82.5,85,87.5,90],v:[70,72.5,75,77.5,80]},
- pull :{h:[10,12.5,15,17.5,20],v:[5,7.5,10,12.5,15]},
- squat:{h:[65,70,75,80,85],v:[55,60,65,70,75]},
- ohp  :{h:[50,52.5,55,57.5,60],v:[42.5,45,47.5,50,52.5]},
- dl   :{h:[105,110,115,120,125],v:[90,95,100,105,110]}
+ bench:{h:[80,82.5,85,87.5,90,92.5],v:[70,72.5,75,77.5,80,82.5]},
+ pull :{h:[10,12.5,15,17.5,20,22.5],v:[5,7.5,10,12.5,15,17.5]},
+ squat:{h:[65,70,75,80,85,90],v:[55,60,65,70,75,80]},
+ ohp  :{h:[50,52.5,55,57.5,60,62.5],v:[42.5,45,47.5,50,52.5,55]},
+ dl   :{h:[105,110,115,120,125,130],v:[90,95,100,105,110,115]}
 };
 const NAMES={bench:'Développé couché',pull:'Tractions lestées',squat:'Squat talons surélevés',ohp:'Développé militaire',dl:'Soulevé de terre'};
 const SHORT={bench:'couché',pull:'tractions',squat:'squat',ohp:'militaire',dl:'soulevé'};
@@ -255,7 +255,7 @@ const ROT=[
 ];
 const LIFTDAY={1:'Mardi',3:'Jeudi',5:'Samedi'};
 const SEQ={};
-(function(){let n=0;for(let w=1;w<=9;w++){[1,3,5].forEach(function(si){if(w===1&&si<5)return;SEQ[w+'-'+si]=n++;});}})();
+(function(){let n=0;for(let w=1;w<=9;w++){[1,3,5].forEach(function(si){SEQ[w+'-'+si]=n++;});}})();
 function liftSession(n,si,lite){
   const c=Math.floor(n/5),pos=n%5,r=ROT[pos];
   const items=[];
@@ -272,7 +272,7 @@ function liftSession(n,si,lite){
   const ss=lite?2:3;
   if(r.tri)items.push("💪 Superset triceps ×"+ss+" : extensions poulie (corde) 10-12 → pompes ou dips, selon l'humeur, 10-15 · repos 60 s");
   if(r.bi)items.push("💪 Superset biceps ×"+ss+" : curl marteau poulie basse (corde) 10-12 → curl incliné assis, dos calé, 10-12 · repos 60 s");
-  return {k:'lift',t:LIFTDAY[si]+' · Séance '+(pos+1)+' — '+SHORT[r.main[0][0]]+' + '+SHORT[r.main[1][0]],p:'tour '+(c+1)+'/5',i:items};
+  return {k:'lift',t:LIFTDAY[si]+' · Séance '+(pos+1)+' — '+SHORT[r.main[0][0]]+' + '+SHORT[r.main[1][0]],p:'tour '+(c+1),i:items};
 }
 function sessions(wn){
   const i=wn-1,d=dl.has(wn);
