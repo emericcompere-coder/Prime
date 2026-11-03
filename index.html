@@ -124,6 +124,12 @@
   .lastc{margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--mist)}
   .tab[data-b="c4"].on{background:var(--ice);border-color:var(--ice)}
   .tab[data-b="c5"].on{background:var(--snow);border-color:var(--snow)}
+  .modetoggle{display:flex;gap:8px;margin:20px 0 4px}
+  .modebtn{flex:1;font-family:var(--disp);font-weight:600;font-size:14px;letter-spacing:.02em;text-transform:uppercase;color:var(--mist);background:var(--granite2);border:1px solid var(--faint);border-radius:10px;padding:11px 14px;cursor:pointer;transition:.18s}
+  .modebtn:hover{color:var(--snow)}
+  .modebtn.on{color:var(--granite);background:var(--ice);border-color:var(--ice)}
+  @media(max-width:480px){.modetoggle{flex-direction:column}}
+  .pill.express{background:rgba(88,198,216,.22);color:var(--ice)}
 </style>
 </head>
 <body>
@@ -142,6 +148,10 @@
       <div class="seg" style="--sc:var(--c1)"><div class="cn">Force</div><div class="ct">5 séances</div><div class="cr">couché · tractions · squat · militaire · soulevé</div><div class="cd">la charge monte à chaque cycle</div></div>
       <div class="seg" style="--sc:var(--c2)"><div class="cn">Course</div><div class="ct">3 séances</div><div class="cr">endurance · côte · piste</div><div class="cd">crescendo, test 5 km au cycle 5</div></div>
       <div class="seg" style="--sc:var(--c3)"><div class="cn">Cycles</div><div class="ct">5 cycles</div><div class="cr">en boucle, à ton rythme</div><div class="cd">cycle 4 allégé</div></div>
+    </div>
+    <div class="modetoggle" id="modeToggle">
+      <button class="modebtn" data-mode="0">Format complet</button>
+      <button class="modebtn" data-mode="1">⚡ Express 30 min</button>
     </div>
   </header>
 </div>
@@ -200,6 +210,13 @@
         <li><b>🥊 Boxe</b> — au moins 2 séances par semaine, où tu veux.</li>
         <li><b>🏔️ Rando</b> chargée — quand tu peux.</li>
         <li>Une case de notes libres est sous chaque séance.</li>
+      </ul></div>
+      <div class="card whytours"><h4><span class="dot"></span>⚡ Mode Express 30 min</h4><ul>
+        <li>Bascule <b>toutes les séances de force</b> vers une version courte : échauffement réduit à 2 min, une série de moins sur chaque exercice, repos raccourcis (90 s / 45 s).</li>
+        <li>Les deux supersets de fin (triceps + biceps) sont fusionnés en <b>un seul finisher enchaîné ×2</b>.</li>
+        <li>Les charges restent identiques, seul le volume et les temps de repos changent.</li>
+        <li>Les séances de course ne sont pas concernées.</li>
+        <li>Le bouton est en haut de page, ton choix est mémorisé.</li>
       </ul></div>
     </div>
   </section>
@@ -272,23 +289,37 @@ const ROT=[
  {main:[['dl','h'],['ohp','v']],tri:1,bi:1},
  {main:[['bench','h'],['dl','v']],tri:1,bi:1}
 ];
-function liftSession(pos,c,lite){
+function liftSession(pos,c,lite,express){
   const r=ROT[pos];
   const items=[];
   if(lite)items.push("~Cycle allégé : une série de moins par exercice, mêmes charges");
-  items.push("~Échauffement 5 min : rotation externe élastique + Y-T-W, puis montées en charge");
+  if(express){
+    items.push("~Format express 30 min : séries, repos et finisher réduits pour tenir le temps");
+    items.push("~Échauffement rapide 2 min : rotation externe élastique");
+  }else{
+    items.push("~Échauffement 5 min : rotation externe élastique + Y-T-W, puis montées en charge");
+  }
   r.main.forEach(function(m){
     const k=m[0],mode=m[1],ld=LOADS[k][mode][c];
     let sets=mode==='h'?(k==='dl'?3:4):3;
     const reps=mode==='h'?5:(k==='dl'?6:8);
     if(lite)sets-=1;
+    if(express)sets=Math.max(2,sets-1);
     const load=k==='pull'?'+'+nf(ld)+' kg':nf(ld)+' kg';
-    items.push('🏋️ '+NAMES[k]+' <b>'+sets+'×'+reps+' @ '+load+'</b> · '+(mode==='h'?'lourd · repos 2-3 min':'léger · repos 90 s'));
+    const rest=express?(mode==='h'?'repos 90 s':'repos 45 s'):(mode==='h'?'repos 2-3 min':'repos 90 s');
+    items.push('🏋️ '+NAMES[k]+' <b>'+sets+'×'+reps+' @ '+load+'</b> · '+(mode==='h'?'lourd · ':'léger · ')+rest);
   });
-  const ss=lite?2:3;
-  if(r.tri)items.push("💪 Superset triceps ×"+ss+" : extensions poulie (corde) 10-12 → pompes ou dips, selon l'humeur, 10-15 · repos 60 s");
-  if(r.bi)items.push("💪 Superset biceps ×"+ss+" : curl marteau poulie basse (corde) 10-12 → curl incliné assis, dos calé, 10-12 · repos 60 s");
-  return {k:'lift',t:'Séance '+(pos+1)+' — '+SHORT[r.main[0][0]]+' + '+SHORT[r.main[1][0]],p:'force',i:items};
+  if(express&&(r.tri||r.bi)){
+    const parts=[];
+    if(r.tri)parts.push('extensions poulie (corde) 10-12 → pompes ou dips 10-15');
+    if(r.bi)parts.push('curl marteau poulie basse (corde) 10-12 → curl incliné assis 10-12');
+    items.push("💪 Finisher express ×2 : "+parts.join(' puis ')+" · repos 45 s entre les tours");
+  }else{
+    const ss=lite?2:3;
+    if(r.tri)items.push("💪 Superset triceps ×"+ss+" : extensions poulie (corde) 10-12 → pompes ou dips, selon l'humeur, 10-15 · repos 60 s");
+    if(r.bi)items.push("💪 Superset biceps ×"+ss+" : curl marteau poulie basse (corde) 10-12 → curl incliné assis, dos calé, 10-12 · repos 60 s");
+  }
+  return {k:'lift',t:'Séance '+(pos+1)+' — '+SHORT[r.main[0][0]]+' + '+SHORT[r.main[1][0]]+(express?' <span class="pill express">30 min</span>':''),p:'force',i:items};
 }
 function runSessions(c){
   const test=(c===4);
@@ -318,13 +349,13 @@ function addSession(sec,s,id){
   card.appendChild(sess);sec.appendChild(card);
 }
 function renderCycle(cy,ci){
-  const sec=document.getElementById('sec-'+cy.id);sec.style.setProperty('--accent',cy.accent);
+  const sec=document.getElementById('sec-'+cy.id);sec.innerHTML='';sec.style.setProperty('--accent',cy.accent);
   const head=el('div','sechead');head.appendChild(el('h2',null,'Cycle '+(ci+1)));head.appendChild(el('span','tag','5 séances de force · 3 séances de course'));sec.appendChild(head);
   const bar=el('div','accentbar');bar.style.background=cy.accent;sec.appendChild(bar);
   sec.appendChild(el('p','secfocus',cy.focus));
   const prog=el('div','prog');prog.innerHTML='<div class="bar"><div class="fill" style="background:'+cy.accent+'"></div></div><div class="num"></div>';sec.appendChild(prog);
   sec.appendChild(el('div','grp','Force · 5 séances'));
-  for(let pos=0;pos<5;pos++)addSession(sec,liftSession(pos,ci,!!cy.lite),cy.id+'-f'+(pos+1));
+  for(let pos=0;pos<5;pos++)addSession(sec,liftSession(pos,ci,!!cy.lite,!!store.mem.express),cy.id+'-f'+(pos+1));
   sec.appendChild(el('div','grp','Course · 3 séances'));
   runSessions(ci).forEach(function(s,j){addSession(sec,s,cy.id+'-r'+(j+1));});
   if(ci<CYCLES.length-1){
@@ -360,7 +391,14 @@ document.querySelector('main').addEventListener('click',e=>{
 });
 document.querySelector('main').addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){const c=e.target.closest('.chk');if(c){e.preventDefault();toggle(c);}}});
 document.querySelector('main').addEventListener('input',e=>{const inp=e.target.closest('.loginp');if(!inp)return;const k=inp.dataset.log,v=inp.value.trim();if(v)store.mem[k]=inp.value;else delete store.mem[k];store.save();});
+function setMode(express){
+  store.mem.express=!!express;store.save();
+  document.querySelectorAll('.modebtn').forEach(b=>b.classList.toggle('on',(b.dataset.mode==='1')===!!express));
+  CYCLES.forEach(renderCycle);
+}
+document.getElementById('modeToggle').addEventListener('click',e=>{const b=e.target.closest('.modebtn');if(b)setMode(b.dataset.mode==='1');});
 store.load();
+document.querySelectorAll('.modebtn').forEach(b=>b.classList.toggle('on',(b.dataset.mode==='1')===!!store.mem.express));
 CYCLES.forEach(renderCycle);
 </script>
 </body>
