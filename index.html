@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Programme Prime — 3 séances course en crescendo + rotation de force en 5 séances, 9 semaines.">
+<meta name="description" content="Programme Prime — cycles en boucle : 5 séances de force + 3 séances de course.">
 <meta name="theme-color" content="#161B21">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -116,6 +116,14 @@
   .daycell .dv{font-family:var(--disp);font-weight:600;font-size:15px;text-transform:uppercase;margin-top:3px}
   .daycell.r .dv{color:var(--ice)} .daycell.l .dv{color:var(--c2)} .daycell.x .dv{color:var(--mist)}
   .items li.mut{color:var(--mist);font-size:12.5px}
+  .grp{font-family:var(--disp);font-weight:600;font-size:22px;text-transform:uppercase;letter-spacing:.02em;margin:24px 0 10px;color:var(--accent)}
+  .scard{border:1px solid var(--faint);border-radius:12px;background:var(--granite2);padding:4px 16px 14px;margin-bottom:12px}
+  .scard .sess{border-top:0;padding:12px 0 0}
+  .notes{width:100%;margin-top:10px;text-align:left;font-family:var(--body);font-size:13px;resize:vertical;min-height:40px;line-height:1.4}
+  .nextc{margin-top:10px;font-family:var(--disp);font-weight:600;font-size:16px;letter-spacing:.03em;text-transform:uppercase;color:var(--granite);background:var(--accent);border:none;border-radius:999px;padding:10px 22px;cursor:pointer}
+  .lastc{margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--mist)}
+  .tab[data-b="c4"].on{background:var(--ice);border-color:var(--ice)}
+  .tab[data-b="c5"].on{background:var(--snow);border-color:var(--snow)}
 </style>
 </head>
 <body>
@@ -127,122 +135,133 @@
 </div>
 <div class="wrap">
   <header>
-    <div class="eyebrow">9 semaines · 2 nov → 3 janv · cœur + force</div>
+    <div class="eyebrow">5 cycles en boucle · force + course</div>
     <h1>Programme <span class="thin">Prime</span></h1>
-    <p class="sub">Trois séances course en crescendo (endurance fondamentale, fractionné en côte, piste) et une rotation de 5 séances de force (couché, tractions, squat, militaire, soulevé de terre). Tu coches chaque séance, tu notes tes charges et tes temps, tout reste sur le téléphone.</p>
+    <p class="sub">Chaque cycle contient 5 séances de force et 3 séances de course. Tu les fais à ton rythme, sans jour imposé. Quand tout est coché, tu passes au cycle suivant. Tu notes ce que tu as fait quand tu veux.</p>
     <div class="band">
-      <div class="seg" style="--sc:var(--c1)"><div class="cn">Bloc 1</div><div class="ct">Construire</div><div class="cr">Semaines 1 à 4</div><div class="cd">2 → 29 nov · S4 allégée</div></div>
-      <div class="seg" style="--sc:var(--c2)"><div class="cn">Bloc 2</div><div class="ct">Monter</div><div class="cr">Semaines 5 à 8</div><div class="cd">30 nov → 27 déc · S8 allégée</div></div>
-      <div class="seg" style="--sc:var(--c3)"><div class="cn">Test</div><div class="ct">Semaine 9</div><div class="cr">Test 5 km chrono</div><div class="cd">28 déc → 3 janv</div></div>
+      <div class="seg" style="--sc:var(--c1)"><div class="cn">Force</div><div class="ct">5 séances</div><div class="cr">couché · tractions · squat · militaire · soulevé</div><div class="cd">la charge monte à chaque cycle</div></div>
+      <div class="seg" style="--sc:var(--c2)"><div class="cn">Course</div><div class="ct">3 séances</div><div class="cr">endurance · côte · piste</div><div class="cd">crescendo, test 5 km au cycle 5</div></div>
+      <div class="seg" style="--sc:var(--c3)"><div class="cn">Cycles</div><div class="ct">5 cycles</div><div class="cr">en boucle, à ton rythme</div><div class="cd">cycle 4 allégé</div></div>
     </div>
   </header>
 </div>
 <nav><div class="navin" id="tabs">
   <button class="tab on" data-sec="over">Vue d'ensemble</button>
-  <button class="tab" data-sec="b1" data-b="c1">Bloc 1 · Construire</button>
-  <button class="tab" data-sec="b2" data-b="c2">Bloc 2 · Monter</button>
-  <button class="tab" data-sec="b3" data-b="c3">Test · S9</button>
+  <button class="tab" data-sec="c1" data-b="c1">Cycle 1</button>
+  <button class="tab" data-sec="c2" data-b="c2">Cycle 2</button>
+  <button class="tab" data-sec="c3" data-b="c3">Cycle 3</button>
+  <button class="tab" data-sec="c4" data-b="c4">Cycle 4 · allégé</button>
+  <button class="tab" data-sec="c5" data-b="c5">Cycle 5 · test</button>
 </div></nav>
 <main class="wrap">
   <section id="sec-over" class="on">
-    <div class="sechead"><h2>La semaine</h2><span class="tag">6 séances + dimanche libre</span></div>
+    <div class="sechead"><h2>La logique</h2><span class="tag">cycles en boucle</span></div>
     <div class="accentbar" style="background:var(--ice)"></div>
-    <div class="weekgrid">
-      <div class="daycell r"><div class="dn">Lun</div><div class="dv">Endurance</div></div>
-      <div class="daycell l"><div class="dn">Mar</div><div class="dv">Force</div></div>
-      <div class="daycell r"><div class="dn">Mer</div><div class="dv">Côte</div></div>
-      <div class="daycell l"><div class="dn">Jeu</div><div class="dv">Force</div></div>
-      <div class="daycell r"><div class="dn">Ven</div><div class="dv">Piste</div></div>
-      <div class="daycell l"><div class="dn">Sam</div><div class="dv">Force</div></div>
-      <div class="daycell x"><div class="dn">Dim</div><div class="dv">Libre</div></div>
-    </div>
-    <div class="cards" style="margin-top:18px">
-      <div class="card"><h4><span class="dot"></span>Le cœur : 3 séances</h4><ul>
-        <li><b>Endurance fondamentale (lundi) :</b> allure facile, tu peux parler. De 5 km à 10 km selon la semaine. Elle construit ta base aérobie et sert de récup active.</li>
-        <li><b>Fractionné en côte (mercredi) :</b> force et puissance de course, très utile pour la montagne.</li>
-        <li><b>Piste (vendredi) :</b> accélération, vitesse max, technique. On monte de 30 m jusqu'au 300 m.</li>
-        <li>Les trois séances montent en crescendo, avec une semaine allégée toutes les 4 semaines.</li>
+    <div class="cards">
+      <div class="card"><h4><span class="dot"></span>Un cycle</h4><ul>
+        <li><b>5 séances de force</b>, toujours dans l'ordre : 1, 2, 3, 4, 5.</li>
+        <li><b>3 séances de course</b> : endurance, côte, piste.</li>
+        <li>Tu mélanges force et course comme ça t'arrange.</li>
+        <li>Évite la piste juste après un squat ou un soulevé lourd.</li>
+        <li>Tout est coché : tu passes au cycle suivant.</li>
       </ul></div>
-      <div class="card"><h4><span class="dot"></span>La rotation : 5 séances</h4><ul>
+      <div class="card"><h4><span class="dot"></span>La force : 5 séances</h4><ul>
         <li><b>Séance 1</b> — tractions (lourd) + développé couché (léger)</li>
         <li><b>Séance 2</b> — squat (lourd) + tractions (léger)</li>
         <li><b>Séance 3</b> — développé militaire (lourd) + squat (léger)</li>
         <li><b>Séance 4</b> — soulevé de terre (lourd) + développé militaire (léger)</li>
         <li><b>Séance 5</b> — développé couché (lourd) + soulevé de terre (léger)</li>
-        <li>Tu enchaînes 1, 2, 3, 4, 5, puis tu recommences. L'exercice lourd passe toujours en premier.</li>
+        <li>L'exercice lourd passe toujours en premier.</li>
       </ul></div>
       <div class="card"><h4><span class="dot"></span>Les supersets de fin de séance</h4><ul>
-        <li><b>Triceps</b> (séances avec couché ou militaire : 1, 3, 4, 5) : extensions à la poulie → pompes ou dips, selon l'humeur.</li>
-        <li><b>Biceps</b> (séances avec tractions ou soulevé : 1, 2, 4, 5) : curl marteau à la poulie basse avec la corde → curl incliné assis, dos calé.</li>
+        <li><b>Triceps</b> (séances 1, 3, 4, 5) : extensions à la poulie → pompes ou dips, selon l'humeur.</li>
+        <li><b>Biceps</b> (séances 1, 2, 4, 5) : curl marteau à la poulie basse avec la corde → curl incliné assis, dos calé.</li>
         <li>Les séances 1, 4 et 5 ont les deux. Si le temps manque, tu coupes un superset.</li>
       </ul></div>
-      <div class="card"><h4><span class="dot"></span>Progression</h4><ul>
+      <div class="card"><h4><span class="dot"></span>Progression de la force</h4><ul>
         <li><b>Lourd :</b> 4×5 (soulevé 3×5), repos 2-3 min. <b>Léger :</b> 3×8 (soulevé 3×6), repos 90 s.</li>
-        <li>À chaque tour de 5 séances : <b>+2,5 kg</b> sur le haut du corps, <b>+5 kg</b> sur le squat et le soulevé.</li>
+        <li>À chaque cycle : <b>+2,5 kg</b> sur le haut du corps, <b>+5 kg</b> sur le squat et le soulevé.</li>
         <li>Toutes les reps sont propres : tu passes à la charge suivante. Sinon, tu répètes.</li>
         <li>Deux séances ratées de suite sur un exercice : −10 %, puis tu repars.</li>
-        <li><b>Semaines 4 et 8 :</b> une série de moins par exercice, mêmes charges.</li>
+        <li><b>Cycle 4 allégé :</b> une série de moins par exercice, mêmes charges.</li>
       </ul></div>
-      <div class="card"><h4><span class="dot"></span>Calendrier</h4><ul>
-        <li>Force mardi, jeudi, samedi : un tour de 5 séances dure environ 1,7 semaine.</li>
-        <li>La rotation démarre <b>mardi 3 novembre</b> : 27 séances de force, soit <b>5 tours complets</b> et les 2 premières séances du 6e, jusqu'au samedi 2 janvier.</li>
-        <li>Squat ou soulevé un jeudi : la piste du vendredi sera plus dure. Tu la fais propre, sans forcer.</li>
+      <div class="card"><h4><span class="dot"></span>La course : 3 séances</h4><ul>
+        <li><b>Endurance fondamentale :</b> allure facile, tu peux parler. De 5 à 8 km.</li>
+        <li><b>Fractionné en côte :</b> force et puissance de course.</li>
+        <li><b>Piste :</b> accélération et vitesse, de 30 m jusqu'au 300 m.</li>
+        <li><b>Cycle 5 :</b> test 5 km chrono à la place de la côte. Ton temps sert de départ pour la suite.</li>
       </ul></div>
       <div class="card"><h4><span class="dot"></span>Ménager l'épaule</h4><ul>
-        <li>Échauffement 5 min avant chaque séance : rotation externe élastique + Y-T-W.</li>
+        <li>Échauffement 5 min avant chaque séance de force : rotation externe élastique + Y-T-W.</li>
         <li>Militaire en haltères prise neutre si ça accroche, amplitude sans douleur.</li>
         <li>Une douleur qui s'installe ou qui gêne la nuit : avis kiné ou médecin.</li>
       </ul></div>
       <div class="card"><h4><span class="dot"></span>À côté</h4><ul>
         <li><b>🥊 Boxe</b> — au moins 2 séances par semaine, où tu veux.</li>
-        <li><b>🏔️ Rando</b> chargée — le dimanche ou le week-end quand tu peux.</li>
-        <li>Le dimanche est libre : rando, boxe, ou vrai repos si le corps le demande.</li>
-      </ul></div>
-      <div class="card whytours"><h4><span class="dot"></span>Fin du programme</h4><ul>
-        <li>La semaine 9 (28 déc → 3 janv) donne ton chrono de départ sur 5 km.</li>
-        <li>Dimanche 3 janvier : libre, tu récupères.</li>
-        <li>Lundi 4 janvier : nouveau programme.</li>
+        <li><b>🏔️ Rando</b> chargée — quand tu peux.</li>
+        <li>Une case de notes libres est sous chaque séance.</li>
       </ul></div>
     </div>
   </section>
-  <section id="sec-b1"></section>
-  <section id="sec-b2"></section>
-  <section id="sec-b3"></section>
-  <footer>Programme Prime · Emeric · 2 nov 2026 → 3 janv 2027 — Crescendo sur la course, charge qui monte à chaque tour sur la force. Tu écoutes ton corps, on ajuste.</footer>
+  <section id="sec-c1"></section>
+  <section id="sec-c2"></section>
+  <section id="sec-c3"></section>
+  <section id="sec-c4"></section>
+  <section id="sec-c5"></section>
+  <footer>Programme Prime · Emeric — 5 cycles en boucle. Les kilos sont des cibles : tu notes ce que tu fais, tu montes quand c'est propre.</footer>
 </main>
 <script>
-const KEY='prime_v5';
+const KEY='prime_v6';
+function migrate(){
+  let old={};
+  try{old=JSON.parse(localStorage.getItem('prime_v5')||'{}')||{};}catch(e){old={};}
+  const map={};let n=0;
+  for(let w=1;w<=9;w++){
+    const b='b'+(w<=4?1:(w<=8?2:3));
+    [1,3,5].forEach(function(si){const c=Math.floor(n/5)+1;if(c<=5)map[b+'-'+w+'-m'+si]='c'+c+'-f'+(n%5+1);n++;});
+    [0,2,4].forEach(function(si,j){if(w<=5)map[b+'-'+w+'-'+si]='c'+w+'-r'+(j+1);});
+  }
+  const out={};
+  Object.keys(old).forEach(function(k){
+    const m=k.match(/^(L:)?(b\d-\d+-m?\d)(?:-(\d+))?$/);
+    if(!m)return;
+    const nid=map[m[2]];
+    if(!nid)return;
+    out[(m[1]||'')+nid+(m[3]!==undefined?'-'+m[3]:'')]=old[k];
+  });
+  return out;
+}
 const store={mem:{},
-  load(){try{const r=localStorage.getItem(KEY);if(r)this.mem=JSON.parse(r);}catch(e){this.mem={};}return this.mem;},
+  load(){
+    try{const r=localStorage.getItem(KEY);if(r){this.mem=JSON.parse(r)||{};return this.mem;}}catch(e){}
+    this.mem=migrate();this.save();return this.mem;
+  },
   save(){try{localStorage.setItem(KEY,JSON.stringify(this.mem));}catch(e){}}
 };
-const dl=new Set([4,8]);
-const DATES=['2 → 8 nov','9 → 15 nov','16 → 22 nov','23 → 29 nov','30 nov → 6 déc','7 → 13 déc','14 → 20 déc','21 → 27 déc','28 déc → 3 janv'];
-const EF=["5 km","6 km","7 km","5 km","8 km","9 km","10 km","6 km","5 km"];
-const COTE=["8×40 s","9×40 s","10×40 s","5×40 s relâché","8×45 s","6×60 s","7×60 s","4×60 s relâché",null];
-const FRI=[
+const nf=n=>String(n).replace('.',',');
+const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const CYCLES=[
+ {id:'c1',accent:'var(--c1)',focus:'Tu poses la base. Tu notes tes vraies charges pour ajuster la suite.'},
+ {id:'c2',accent:'var(--c2)',focus:'Les charges montent d’un cran et les séances de course s’allongent.'},
+ {id:'c3',accent:'var(--c3)',focus:'Le cycle le plus chargé : tu montes encore, c’est le pic du programme.'},
+ {id:'c4',accent:'var(--ice)',lite:true,focus:'Cycle allégé : une série de moins sur la force, course relâchée. Tu récupères pour repartir plus haut.'},
+ {id:'c5',accent:'var(--snow)',focus:'Dernier cycle : la force monte encore et tu fais le test 5 km chrono.'}
+];
+const EF=["5 km","6 km","8 km","6 km","5 km"];
+const COTE=["8×40 s","10×40 s","6×60 s","5×40 s relâché",null];
+const PISTE=[
  "4×30 m (récup 60 s) · 4×60 m (récup 2'30)",
- "5×30 m (récup 60 s) · 5×60 m (récup 2'30)",
  "4×60 m (récup 2'30) · 3×100 m (récup 3')",
- "3×30 m · 3×60 m — relâché",
- "3×60 m (récup 2'30) · 4×100 m (récup 3')",
- "3×100 m (récup 3') · 2×150 m (récup 4')",
  "2×100 m · 2×150 m · 1×200 m (récup 4-5')",
- "3×60 m · 2×100 m — relâché",
+ "3×30 m · 3×60 m — relâché",
  "2×100 m · 1×200 m · 1×300 m à 95 % (étape vers le 400 m)"
 ];
-const BLOCKS=[
- {id:'b1',cid:'c1',name:'Bloc 1 · Construire',accent:'var(--c1)',weeks:[1,2,3,4],focus:'Tu poses la base : les séances course montent doucement et la rotation de force démarre mardi 3 novembre. La semaine 4 est allégée.'},
- {id:'b2',cid:'c2',name:'Bloc 2 · Monter',accent:'var(--c2)',weeks:[5,6,7,8],focus:'Les séances course s’allongent et la piste monte jusqu’au 200 m. La semaine 8 est allégée.'},
- {id:'b3',cid:'c3',name:'Test · Semaine 9',accent:'var(--c3)',weeks:[9],focus:'Tu arrives frais. Mercredi : test 5 km chrono. Le reste de la semaine est léger.'},
-];
-const nf=n=>String(n).replace('.',',');
 const LOADS={
- bench:{h:[80,82.5,85,87.5,90,92.5],v:[70,72.5,75,77.5,80,82.5]},
- pull :{h:[10,12.5,15,17.5,20,22.5],v:[5,7.5,10,12.5,15,17.5]},
- squat:{h:[65,70,75,80,85,90],v:[55,60,65,70,75,80]},
- ohp  :{h:[50,52.5,55,57.5,60,62.5],v:[42.5,45,47.5,50,52.5,55]},
- dl   :{h:[105,110,115,120,125,130],v:[90,95,100,105,110,115]}
+ bench:{h:[80,82.5,85,87.5,90],v:[70,72.5,75,77.5,80]},
+ pull :{h:[10,12.5,15,17.5,20],v:[5,7.5,10,12.5,15]},
+ squat:{h:[65,70,75,80,85],v:[55,60,65,70,75]},
+ ohp  :{h:[50,52.5,55,57.5,60],v:[42.5,45,47.5,50,52.5]},
+ dl   :{h:[105,110,115,120,125],v:[90,95,100,105,110]}
 };
 const NAMES={bench:'Développé couché',pull:'Tractions lestées',squat:'Squat talons surélevés',ohp:'Développé militaire',dl:'Soulevé de terre'};
 const SHORT={bench:'couché',pull:'tractions',squat:'squat',ohp:'militaire',dl:'soulevé'};
@@ -253,13 +272,10 @@ const ROT=[
  {main:[['dl','h'],['ohp','v']],tri:1,bi:1},
  {main:[['bench','h'],['dl','v']],tri:1,bi:1}
 ];
-const LIFTDAY={1:'Mardi',3:'Jeudi',5:'Samedi'};
-const SEQ={};
-(function(){let n=0;for(let w=1;w<=9;w++){[1,3,5].forEach(function(si){SEQ[w+'-'+si]=n++;});}})();
-function liftSession(n,si,lite){
-  const c=Math.floor(n/5),pos=n%5,r=ROT[pos];
+function liftSession(pos,c,lite){
+  const r=ROT[pos];
   const items=[];
-  if(lite)items.push("~Semaine allégée : une série de moins par exercice, mêmes charges");
+  if(lite)items.push("~Cycle allégé : une série de moins par exercice, mêmes charges");
   items.push("~Échauffement 5 min : rotation externe élastique + Y-T-W, puis montées en charge");
   r.main.forEach(function(m){
     const k=m[0],mode=m[1],ld=LOADS[k][mode][c];
@@ -272,64 +288,80 @@ function liftSession(n,si,lite){
   const ss=lite?2:3;
   if(r.tri)items.push("💪 Superset triceps ×"+ss+" : extensions poulie (corde) 10-12 → pompes ou dips, selon l'humeur, 10-15 · repos 60 s");
   if(r.bi)items.push("💪 Superset biceps ×"+ss+" : curl marteau poulie basse (corde) 10-12 → curl incliné assis, dos calé, 10-12 · repos 60 s");
-  return {k:'lift',t:LIFTDAY[si]+' · Séance '+(pos+1)+' — '+SHORT[r.main[0][0]]+' + '+SHORT[r.main[1][0]],p:'tour '+(c+1),i:items};
+  return {k:'lift',t:'Séance '+(pos+1)+' — '+SHORT[r.main[0][0]]+' + '+SHORT[r.main[1][0]],p:'force',i:items};
 }
-function sessions(wn){
-  const i=wn-1,d=dl.has(wn);
-  const lift=function(si){const n=SEQ[wn+'-'+si];return n===undefined?null:liftSession(n,si,d);};
-  const coteItems=wn===9
+function runSessions(c){
+  const test=(c===4);
+  const coteItems=test
     ?["~Échauffement 15 min facile + 4 lignes droites","🏁 <b>TEST 5 km chrono</b> · à fond, allure régulière · note ton temps","~5-10 min retour au calme"]
-    :["~15 min facile + gammes","🏃 <b>"+COTE[i]+"</b> en côte, vif · récup en descente en trottinant","~5-10 min retour au calme"];
+    :["~15 min facile + gammes","🏃 <b>"+COTE[c]+"</b> en côte, vif · récup en descente en trottinant","~5-10 min retour au calme"];
   return [
-    {k:'run',t:'Lundi · Endurance fondamentale',p:'base aérobie',i:["🏃 <b>"+EF[i]+"</b> à allure facile · tu peux tenir une conversation","~Si le souffle monte, tu ralentis"]},
-    lift(1),
-    {k:'run',t:'Mercredi · '+(wn===9?'TEST 5 km':'Fractionné côte'),p:wn===9?'test':'côte',i:coteItems},
-    lift(3),
-    {k:'run',t:'Vendredi · Piste',p:'vitesse',i:["~12 min facile + accélérations + gammes (talons-fesses…)","🏃 <b>"+FRI[i]+"</b>","~5 min facile"]},
-    lift(5)
+    {k:'run',t:'Run 1 — Endurance fondamentale',p:'base aérobie',i:["🏃 <b>"+EF[c]+"</b> à allure facile · tu peux tenir une conversation","~Si le souffle monte, tu ralentis"]},
+    {k:'run',t:'Run 2 — '+(test?'TEST 5 km chrono':'Fractionné côte'),p:test?'test':'côte',i:coteItems},
+    {k:'run',t:'Run 3 — Piste',p:'vitesse',i:["~12 min facile + accélérations + gammes (talons-fesses…)","🏃 <b>"+PISTE[c]+"</b>","~5 min facile"]}
   ];
 }
 function el(t,c,h){const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
-function renderBlock(b,bi){
-  const sec=document.getElementById('sec-'+b.id);sec.style.setProperty('--accent',b.accent);
-  const head=el('div','sechead');head.appendChild(el('h2',null,b.name.split('·')[1].trim()));head.appendChild(el('span','tag',b.weeks.length>1?'semaines '+b.weeks[0]+' à '+b.weeks[b.weeks.length-1]:'semaine 9'));sec.appendChild(head);
-  const bar=el('div','accentbar');bar.style.background=b.accent;sec.appendChild(bar);
-  sec.appendChild(el('p','secfocus',b.focus));
-  const prog=el('div','prog');prog.innerHTML='<div class="bar"><div class="fill" style="background:'+b.accent+'"></div></div><div class="num"></div>';sec.appendChild(prog);
-  b.weeks.forEach(function(wn,wi){
-    const isdl=dl.has(wn),istest=wn===9;
-    const wd=el('div','week'+(isdl?' deload':'')+(bi===0&&wi===0?' open':''));wd.style.setProperty('--accent',b.accent);
-    const head=el('div','whead');
-    head.innerHTML='<div class="wnum">S'+wn+'</div><div class="wmeta"><div class="wt">Semaine '+wn+'</div><div class="wd">'+DATES[wn-1]+'</div></div>'+(isdl?'<span class="badge">Allégée</span>':'')+(istest?'<span class="badge">Test</span>':'')+'<div class="chev">▶</div>';
-    wd.appendChild(head);
-    const body=el('div','wbody');
-    sessions(wn).forEach(function(s,si){
-      if(!s)return;
-      const id=b.id+'-'+wn+'-'+(s.k==='lift'?'m':'')+si;const done=!!store.mem[id];
-      const sess=el('div','sess '+s.k);
-      const lis=s.i.map(function(x,xi){
-        if(x.charAt(0)==='~')return '<li class="mut">'+x.slice(1)+'</li>';
-        var lid="L:"+id+"-"+xi;var lv=(store.mem[lid]||"").replace(/"/g,"&quot;");
-        return '<li class="exrow"><span class="exn">'+x+'</span><input class="loginp" type="text" inputmode="text" placeholder="note" data-log="'+lid+'" value="'+lv+'"></li>';
-      }).join('');
-      sess.innerHTML='<div class="chk'+(done?' done':'')+'" data-id="'+id+'" role="checkbox" aria-checked="'+done+'" tabindex="0"></div>'+
-        '<div class="sbody'+(done?' done':'')+'"><div class="sday">'+s.t+' <span class="pill">'+s.p+'</span></div><ul class="items">'+lis+'</ul></div>';
-      body.appendChild(sess);
-    });
-    body.appendChild(el('div','satline','+ à côté : 🥊 boxe, au moins 2 séances · 🏔️ rando du week-end'));
-    wd.appendChild(body);sec.appendChild(wd);
-    head.addEventListener('click',function(){wd.classList.toggle('open');});
-  });
-  updateProg(b.id,b.accent);
+function addSession(sec,s,id){
+  const done=!!store.mem[id];
+  const card=el('div','scard');
+  const sess=el('div','sess '+s.k);
+  const lis=s.i.map(function(x,xi){
+    if(x.charAt(0)==='~')return '<li class="mut">'+x.slice(1)+'</li>';
+    const lid='L:'+id+'-'+xi;const lv=esc(store.mem[lid]||'');
+    return '<li class="exrow"><span class="exn">'+x+'</span><input class="loginp" type="text" inputmode="text" placeholder="note" data-log="'+lid+'" value="'+lv+'"></li>';
+  }).join('');
+  const nk='N:'+id;
+  sess.innerHTML='<div class="chk'+(done?' done':'')+'" data-id="'+id+'" role="checkbox" aria-checked="'+done+'" tabindex="0"></div>'+
+    '<div class="sbody'+(done?' done':'')+'"><div class="sday">'+s.t+' <span class="pill">'+s.p+'</span></div><ul class="items">'+lis+'</ul>'+
+    '<textarea class="loginp notes" rows="2" placeholder="Notes libres : ce que j\'ai fait, mes ressentis…" data-log="'+nk+'">'+esc(store.mem[nk]||'')+'</textarea></div>';
+  card.appendChild(sess);sec.appendChild(card);
 }
-function updateProg(bid,accent){const sec=document.getElementById('sec-'+bid);const chks=sec.querySelectorAll('.chk');const done=sec.querySelectorAll('.chk.done').length;const pct=chks.length?Math.round(done/chks.length*100):0;const fill=sec.querySelector('.fill');fill.style.width=pct+'%';fill.style.background=accent;sec.querySelector('.prog .num').textContent=done+' / '+chks.length+' séances';}
-function toggle(chk){const id=chk.dataset.id;const now=!chk.classList.contains('done');chk.classList.toggle('done',now);chk.setAttribute('aria-checked',now);chk.nextElementSibling.classList.toggle('done',now);if(now)store.mem[id]=1;else delete store.mem[id];store.save();const bid=id.split('-')[0];const b=BLOCKS.find(x=>x.id===bid);updateProg(bid,b.accent);}
-document.getElementById('tabs').addEventListener('click',e=>{const t=e.target.closest('.tab');if(!t)return;document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));document.querySelectorAll('main section').forEach(x=>x.classList.remove('on'));t.classList.add('on');document.getElementById('sec-'+t.dataset.sec).classList.add('on');window.scrollTo({top:0,behavior:'smooth'});});
-document.querySelector('main').addEventListener('click',e=>{const c=e.target.closest('.chk');if(c)toggle(c);});
+function renderCycle(cy,ci){
+  const sec=document.getElementById('sec-'+cy.id);sec.style.setProperty('--accent',cy.accent);
+  const head=el('div','sechead');head.appendChild(el('h2',null,'Cycle '+(ci+1)));head.appendChild(el('span','tag','5 séances de force · 3 séances de course'));sec.appendChild(head);
+  const bar=el('div','accentbar');bar.style.background=cy.accent;sec.appendChild(bar);
+  sec.appendChild(el('p','secfocus',cy.focus));
+  const prog=el('div','prog');prog.innerHTML='<div class="bar"><div class="fill" style="background:'+cy.accent+'"></div></div><div class="num"></div>';sec.appendChild(prog);
+  sec.appendChild(el('div','grp','Force · 5 séances'));
+  for(let pos=0;pos<5;pos++)addSession(sec,liftSession(pos,ci,!!cy.lite),cy.id+'-f'+(pos+1));
+  sec.appendChild(el('div','grp','Course · 3 séances'));
+  runSessions(ci).forEach(function(s,j){addSession(sec,s,cy.id+'-r'+(j+1));});
+  if(ci<CYCLES.length-1){
+    const nb=el('button','nextc','Cycle suivant →');nb.dataset.next=CYCLES[ci+1].id;sec.appendChild(nb);
+  }else{
+    sec.appendChild(el('div','lastc','Dernier cycle. Ton chrono du test 5 km sert de point de départ pour la suite.'));
+  }
+  updateProg(cy.id,cy.accent);
+}
+function updateProg(cid,accent){
+  const sec=document.getElementById('sec-'+cid);
+  const total=sec.querySelectorAll('.chk').length,done=sec.querySelectorAll('.chk.done').length;
+  const pct=total?Math.round(done/total*100):0;
+  const fill=sec.querySelector('.fill');fill.style.width=pct+'%';fill.style.background=accent;
+  sec.querySelector('.prog .num').textContent=(total&&done===total)?'Cycle terminé ✓':done+' / '+total+' séances';
+}
+function toggle(chk){
+  const id=chk.dataset.id;const now=!chk.classList.contains('done');
+  chk.classList.toggle('done',now);chk.setAttribute('aria-checked',now);chk.nextElementSibling.classList.toggle('done',now);
+  if(now)store.mem[id]=1;else delete store.mem[id];
+  store.save();
+  const cid=id.split('-')[0];const cy=CYCLES.find(c=>c.id===cid);updateProg(cid,cy.accent);
+}
+function showTab(key){
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x.dataset.sec===key));
+  document.querySelectorAll('main section').forEach(x=>x.classList.toggle('on',x.id==='sec-'+key));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.getElementById('tabs').addEventListener('click',e=>{const t=e.target.closest('.tab');if(t)showTab(t.dataset.sec);});
+document.querySelector('main').addEventListener('click',e=>{
+  const c=e.target.closest('.chk');if(c){toggle(c);return;}
+  const nb=e.target.closest('.nextc');if(nb)showTab(nb.dataset.next);
+});
 document.querySelector('main').addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){const c=e.target.closest('.chk');if(c){e.preventDefault();toggle(c);}}});
-document.querySelector('main').addEventListener('input',e=>{const inp=e.target.closest('.loginp');if(!inp)return;const k=inp.dataset.log,v=inp.value.trim();if(v)store.mem[k]=v;else delete store.mem[k];store.save();});
+document.querySelector('main').addEventListener('input',e=>{const inp=e.target.closest('.loginp');if(!inp)return;const k=inp.dataset.log,v=inp.value.trim();if(v)store.mem[k]=inp.value;else delete store.mem[k];store.save();});
 store.load();
-BLOCKS.forEach(renderBlock);
+CYCLES.forEach(renderCycle);
 </script>
 </body>
 </html>
